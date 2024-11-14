@@ -227,3 +227,17 @@ TEST(lexcaos, error_token) {
     EXPECT_EQ(tokens[3].value, "invalid_token");
     EXPECT_EQ(tokens[4].type, caostoken::TOK_EOI);
 }
+
+TEST(lexcaos, unterminated_double_quote) {
+    std::vector<caostoken> tokens;
+    lexcaos(tokens, "\"");
+
+    ASSERT_GT(tokens.size(), 1);
+}
+
+TEST(lexcaos, unterminated_byte_string) {
+    std::vector<caostoken> tokens;
+    lexcaos(tokens, "[");
+
+    ASSERT_GT(tokens.size(), 1);
+}
