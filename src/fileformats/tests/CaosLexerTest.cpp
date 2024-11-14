@@ -6,6 +6,27 @@
 #include <vector>
 #include <string>
 
+TEST(lexcaos, evil_input) {
+    std::vector<caostoken> tokens;
+    lexcaos(tokens, R"(
+* unit tests for the non-ifblock flow stuff
+* fuzzie, 06/06/04
+
+* test LOOP .. UNTL
+SETV VA00 0
+LOOP
+ADDV VA00 1
+UNTL VA00 eq 3
+DBG: ASRT VA00 eq 3
+
+* test LOOP .. EVER
+SETS VA00 CAOS 1 0 0 0 "SETV VA00 3 LOOP DOIF VA00 EQ 0 STOP ENDI OUTV VA00 SUBV VA00
+)");
+
+    ASSERT_GT(tokens.size(), 0);
+}
+
+
 TEST(lexcaos, empty_input) {
     std::vector<caostoken> tokens;
     lexcaos(tokens, "");

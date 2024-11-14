@@ -94,7 +94,7 @@ TEST(praysourceparser, at_sign_values) {
 TEST(praysourceparser, inline_blocks) {
 	// expect it to not error
 	PraySourceParser::parse(R"(
-        "en-GB"
+        "en-
         inline FILE "norn.gno" "norn.gno"
     )");
 }

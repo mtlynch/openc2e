@@ -84,14 +84,6 @@ start:
 		}
 		push_value(caostoken::TOK_FLOAT);
 	}
-	// negative decimal with no leading digit, e.g. `-.15`
-	else if (p[0] == '-' && p[1] == '.' && is_ascii_digit(p[2])) {
-		p += 3;
-		while (is_ascii_digit(p[0])) {
-			p++;
-		}
-		push_value(caostoken::TOK_FLOAT);
-	}
 	// integers and decimals with leading digits
 	else if ((is_ascii_digit(p[0]) && !is_ascii_alpha(p[1])) || (p[0] == '-' && is_ascii_digit(p[1]))) {
 		p++;
