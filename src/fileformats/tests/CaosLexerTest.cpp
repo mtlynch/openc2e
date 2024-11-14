@@ -232,33 +232,46 @@ TEST(lexcaos, unterminated_single_quote) {
     std::vector<caostoken> tokens;
     lexcaos(tokens, "'");
 
-    ASSERT_GT(tokens.size(), 1);
+    ASSERT_EQ(tokens.size(), 1);
+    EXPECT_EQ(tokens[1].type, caostoken::TOK_ERROR);
 }
 
 TEST(lexcaos, unterminated_single_quote_letter) {
     std::vector<caostoken> tokens;
     lexcaos(tokens, "'a");
 
-    ASSERT_GT(tokens.size(), 1);
+    ASSERT_EQ(tokens.size(), 1);
+    EXPECT_EQ(tokens[1].type, caostoken::TOK_ERROR);
 }
 
 TEST(lexcaos, unterminated_single_quote_slash) {
     std::vector<caostoken> tokens;
     lexcaos(tokens, "'\\");
 
-    ASSERT_GT(tokens.size(), 1);
+    ASSERT_EQ(tokens.size(), 1);
+    EXPECT_EQ(tokens[1].type, caostoken::TOK_ERROR);
 }
 
 TEST(lexcaos, unterminated_double_quote) {
     std::vector<caostoken> tokens;
     lexcaos(tokens, "\"");
 
-    ASSERT_GT(tokens.size(), 1);
+    ASSERT_EQ(tokens.size(), 1);
+    EXPECT_EQ(tokens[1].type, caostoken::TOK_ERROR);
 }
 
 TEST(lexcaos, unterminated_byte_string) {
     std::vector<caostoken> tokens;
     lexcaos(tokens, "[");
 
-    ASSERT_GT(tokens.size(), 1);
+    ASSERT_EQ(tokens.size(), 1);
+    EXPECT_EQ(tokens[1].type, caostoken::TOK_ERROR);
+}
+
+TEST(lexcaos, unterminated_escape_sequence) {
+    std::vector<caostoken> tokens;
+    lexcaos(tokens, "\\");
+
+    ASSERT_EQ(tokens.size(), 1);
+    EXPECT_EQ(tokens[1].type, caostoken::TOK_ERROR);
 }
