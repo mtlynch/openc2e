@@ -139,7 +139,7 @@ start:
 		if (p[0] == '\0') {
 			push_value(caostoken::TOK_ERROR);
 			goto eoi;
-		}	else if (p[0] != '\'') {
+		} else if (p[0] != '\'') {
 			p++;
 			push_value(caostoken::TOK_ERROR);
 		}
