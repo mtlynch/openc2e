@@ -133,12 +133,12 @@ start:
 		}
 		if (p[0] == '\0') {
 			push_value(caostoken::TOK_ERROR);
-      goto eoi;
+			goto eoi;
 		}
 		p++; // the actual char
 		if (p[0] == '\0') {
 			push_value(caostoken::TOK_ERROR);
-      goto eoi;
+			goto eoi;
 		}	else if (p[0] != '\'') {
 			p++;
 			push_value(caostoken::TOK_ERROR);
@@ -188,17 +188,17 @@ start:
 str:
 	if (p[0] == '\0') {
 		push_value(caostoken::TOK_ERROR);
-    goto eoi;
-  } else if (p[0] == '\r' || p[0] == '\n') {
+		goto eoi;
+	} else if (p[0] == '\r' || p[0] == '\n') {
 		p++;
 		push_value(caostoken::TOK_ERROR);
 	} else if (p[0] == '\\') {
-    p++;
-    if (p[0] == '\0') {
-      push_value(caostoken::TOK_ERROR);
-      goto eoi;
-    }
-    p++;
+		p++;
+		if (p[0] == '\0') {
+			push_value(caostoken::TOK_ERROR);
+			goto eoi;
+		}
+		p++;
 		goto str;
 	} else if (p[0] == '"') {
 		p++;
@@ -211,8 +211,8 @@ str:
 bytestr:
 	if (p[0] == '\0') {
 		push_value(caostoken::TOK_ERROR);
-    goto eoi;
-  } else if (p[0] == '\r' || p[0] == '\n') {
+		goto eoi;
+	} else if (p[0] == '\r' || p[0] == '\n') {
 		p++;
 	} else if (p[0] == ']') {
 		p++;
