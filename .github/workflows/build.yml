@@ -26,58 +26,36 @@ jobs:
     - name: "clang-format"
       run: "./clang-format-10_linux-amd64 -i src/**/*.cpp src/**/*.h && git diff --exit-code"
 
-  build:
-    name: build-${{ matrix.os }}
+    build:
+    name: build-${{ matrix.os }}-${{ matrix.build_type }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [windows-latest,ubuntu-latest,macos-latest]
+        build_type: [RelWithDebInfo, Debug]
     steps:
-    - name: "Check out source"
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     - name: "Install dependencies (Ubuntu)"
       if: "startsWith(matrix.os, 'ubuntu-')"
       run: sudo apt-get update && sudo apt-get install libpng-dev libsdl2-dev libsdl2-mixer-dev zlib1g-dev
     - name: "Configure"
-      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
     - name: "Build"
-      run: cmake --build build --config RelWithDebInfo
+      run: cmake --build build --config ${{ matrix.build_type }}
     - name: "Create distribution artifact"
-      if: runner.os == 'Windows'
-      run: cmake --install build --config RelWithDebInfo --prefix "openc2e-${{ github.sha }}-${{ runner.os }}"
-    - name: "Create distribution artifact"
-      if: runner.os == 'Windows'
-      run: cmake --install build --config RelWithDebInfo --prefix "mngplayer2-${{ github.sha }}-${{ runner.os }}" --component mngplayer2
-    - name: "Upload distribution artifact"
-      if: runner.os == 'Windows'
+      if: runner.os == 'Windows' && matrix.build_type == 'RelWithDebInfo'
+      run: |
+        cmake --install build --config ${{ matrix.build_type }} --prefix "openc2e-${{ github.sha }}-${{ runner.os }}"
+        cmake --install build --config ${{ matrix.build_type }} --prefix "mngplayer2-${{ github.sha }}-${{ runner.os }}" --component mngplayer2
+    - name: "Upload artifacts"
+      if: runner.os == 'Windows' && matrix.build_type == 'RelWithDebInfo'
       uses: actions/upload-artifact@v4
       with:
-        name: openc2e-${{ github.sha }}-${{ runner.os }}
-        path: openc2e-${{ github.sha }}-${{ runner.os }}
-    - name: "Upload distribution artifact"
-      if: runner.os == 'Windows'
-      uses: actions/upload-artifact@v4
-      with:
-        name: MNGPlayer2-${{ github.sha }}-${{ runner.os }}
-        path: mngplayer2-${{ github.sha }}-${{ runner.os }}
-
-  test:
-    name: build-${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: true
-      matrix:
-        os: [windows-latest,ubuntu-latest,macos-latest]
-    steps:
-    - name: "Check out source"
-      uses: actions/checkout@v3
-    - name: "Install dependencies (Ubuntu)"
-      if: "startsWith(matrix.os, 'ubuntu-')"
-      run: sudo apt-get update && sudo apt-get install libpng-dev libsdl2-dev libsdl2-mixer-dev zlib1g-dev
-    - name: "Configure"
-      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
-    - name: "Build"
-      run: cmake --build build --config Debug
+        name: builds-${{ github.sha }}-${{ runner.os }}
+        path: |
+          openc2e-${{ github.sha }}-${{ runner.os }}
+          mngplayer2-${{ github.sha }}-${{ runner.os }}
     - name: "Test"
-      run: cd build && ctest --build-config Debug
+      if: matrix.build_type == 'Debug'
+      run: cd build && ctest --build-config ${{ matrix.build_type }}
