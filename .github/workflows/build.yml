@@ -34,7 +34,8 @@ jobs:
       matrix:
         #os: [windows-latest,ubuntu-latest,macos-latest]
         os: [ubuntu-latest] # DEBUG
-        build_type: [RelWithDebInfo, Debug]
+        #build_type: [RelWithDebInfo, Debug]
+        build_type: [Debug] # DEBUG
     steps:
     - name: "Check out source"
       uses: actions/checkout@v3
