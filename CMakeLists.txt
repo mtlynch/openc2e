@@ -31,6 +31,11 @@ if(NOT (WIN32 OR EMSCRIPTEN))
 	endif()
 endif()
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug" AND (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"))
+    add_compile_options(-fsanitize=address)
+    add_link_options(-fsanitize=address)
+endif()
+
 option(OPENC2E_USE_SERIALIZATION "Build the experimental serialization code" OFF)
 option(OPENC2E_PROFILE_ALLOCATION "Collect allocation profile stats for DBG: SIZO" OFF)
 if (OPENC2E_PROFILE_ALLOCATION)
