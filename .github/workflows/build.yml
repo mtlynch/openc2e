@@ -26,7 +26,7 @@ jobs:
     - name: "clang-format"
       run: "./clang-format-10_linux-amd64 -i src/**/*.cpp src/**/*.h && git diff --exit-code"
 
-    build:
+  build:
     name: build-${{ matrix.os }}-${{ matrix.build_type }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -35,7 +35,8 @@ jobs:
         os: [windows-latest,ubuntu-latest,macos-latest]
         build_type: [RelWithDebInfo, Debug]
     steps:
-    - uses: actions/checkout@v3
+    - name: "Check out source"
+      uses: actions/checkout@v3
     - name: "Install dependencies (Ubuntu)"
       if: "startsWith(matrix.os, 'ubuntu-')"
       run: sudo apt-get update && sudo apt-get install libpng-dev libsdl2-dev libsdl2-mixer-dev zlib1g-dev
@@ -43,6 +44,9 @@ jobs:
       run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
     - name: "Build"
       run: cmake --build build --config ${{ matrix.build_type }}
+    - name: "Test"
+      if: matrix.build_type == 'Debug'
+      run: cd build && ctest --build-config ${{ matrix.build_type }}
     - name: "Create distribution artifact"
       if: runner.os == 'Windows' && matrix.build_type == 'RelWithDebInfo'
       run: |
