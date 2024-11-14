@@ -244,6 +244,14 @@ TEST(lexcaos, unterminated_single_quote_letter) {
     EXPECT_EQ(tokens[1].type, caostoken::TOK_ERROR);
 }
 
+TEST(lexcaos, empty_single_quote) {
+    std::vector<caostoken> tokens;
+    lexcaos(tokens, "''");
+
+    ASSERT_EQ(tokens.size(), 1);
+    EXPECT_EQ(tokens[1].type, caostoken::TOK_ERROR);
+}
+
 TEST(lexcaos, unterminated_single_quote_slash) {
     std::vector<caostoken> tokens;
     lexcaos(tokens, "'\\");
