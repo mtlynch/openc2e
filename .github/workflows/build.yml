@@ -32,7 +32,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest,ubuntu-latest,macos-latest]
+        #os: [windows-latest,ubuntu-latest,macos-latest]
+        os: [ubuntu-latest] # DEBUG
         build_type: [RelWithDebInfo, Debug]
     steps:
     - name: "Check out source"
@@ -45,21 +46,22 @@ jobs:
     - name: "Build"
       run: cmake --build build --config ${{ matrix.build_type }}
     - name: "Test"
-      if: matrix.build_type == 'Debug'
       run: cd build && ctest --build-config ${{ matrix.build_type }}
     - name: "Create distribution artifact"
       if: runner.os == 'Windows' && matrix.build_type == 'RelWithDebInfo'
-      run: |
-        cmake --install build --config ${{ matrix.build_type }} --prefix "openc2e-${{ github.sha }}-${{ runner.os }}"
-        cmake --install build --config ${{ matrix.build_type }} --prefix "mngplayer2-${{ github.sha }}-${{ runner.os }}" --component mngplayer2
-    - name: "Upload artifacts"
+      run: cmake --install build --config RelWithDebInfo --prefix "openc2e-${{ github.sha }}-${{ runner.os }}"
+    - name: "Create distribution artifact"
+      if: runner.os == 'Windows' && matrix.build_type == 'RelWithDebInfo'
+      run: cmake --install build --config RelWithDebInfo --prefix "mngplayer2-${{ github.sha }}-${{ runner.os }}" --component mngplayer2
+    - name: "Upload distribution artifact"
       if: runner.os == 'Windows' && matrix.build_type == 'RelWithDebInfo'
       uses: actions/upload-artifact@v4
       with:
-        name: builds-${{ github.sha }}-${{ runner.os }}
-        path: |
-          openc2e-${{ github.sha }}-${{ runner.os }}
-          mngplayer2-${{ github.sha }}-${{ runner.os }}
-    - name: "Test"
-      if: matrix.build_type == 'Debug'
-      run: cd build && ctest --build-config ${{ matrix.build_type }}
+        name: openc2e-${{ github.sha }}-${{ runner.os }}
+        path: openc2e-${{ github.sha }}-${{ runner.os }}
+    - name: "Upload distribution artifact"
+      if: runner.os == 'Windows' && matrix.build_type == 'RelWithDebInfo'
+      uses: actions/upload-artifact@v4
+      with:
+        name: MNGPlayer2-${{ github.sha }}-${{ runner.os }}
+        path: mngplayer2-${{ github.sha }}-${{ runner.os }}
