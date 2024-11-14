@@ -228,6 +228,27 @@ TEST(lexcaos, error_token) {
     EXPECT_EQ(tokens[4].type, caostoken::TOK_EOI);
 }
 
+TEST(lexcaos, unterminated_single_quote) {
+    std::vector<caostoken> tokens;
+    lexcaos(tokens, "'");
+
+    ASSERT_GT(tokens.size(), 1);
+}
+
+TEST(lexcaos, unterminated_single_quote_letter) {
+    std::vector<caostoken> tokens;
+    lexcaos(tokens, "'a");
+
+    ASSERT_GT(tokens.size(), 1);
+}
+
+TEST(lexcaos, unterminated_single_quote_slash) {
+    std::vector<caostoken> tokens;
+    lexcaos(tokens, "'\\");
+
+    ASSERT_GT(tokens.size(), 1);
+}
+
 TEST(lexcaos, unterminated_double_quote) {
     std::vector<caostoken> tokens;
     lexcaos(tokens, "\"");
