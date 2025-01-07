@@ -138,7 +138,7 @@ static void drawOldBrain(oldBrain* b) {
 			oldNeuron* dest = lobe->getNeuron(j);
 			for (auto& dendrite : dest->dendrites) {
 				for (std::vector<oldDendrite>::iterator d = dendrite.begin();
-					 d != dendrite.end(); d++) {
+					d != dendrite.end(); d++) {
 					oldNeuron* src = d->src;
 
 					float var = d->strength / 255.0;

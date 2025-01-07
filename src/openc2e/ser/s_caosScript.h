@@ -16,7 +16,7 @@
 BOOST_CLASS_IMPLEMENTATION(toktrace, boost::serialization::object_serializable);
 BOOST_CLASS_TRACKING(toktrace, boost::serialization::track_never);
 SERIALIZE(toktrace) {
-	ar& obj.width& obj.lineno;
+	ar & obj.width & obj.lineno;
 }
 
 SERIALIZE(script) {
@@ -24,14 +24,14 @@ SERIALIZE(script) {
 	//	ar & obj.relocations;
 	//	ar & obj.labels;
 
-	ar& obj.ops;
-	ar& obj.consts;
-	ar& obj.code;
-	ar& obj.tokinfo;
+	ar & obj.ops;
+	ar & obj.consts;
+	ar & obj.code;
+	ar & obj.tokinfo;
 
 	//	ar & obj.fmly & obj.gnus & obj.spcs & obj.scrp;
 	// dialect handled in post-serialization code
-	ar& obj.filename;
+	ar & obj.filename;
 	//	ar & obj.gsub; // XXX duplicate with labels
 }
 
@@ -50,7 +50,7 @@ static void make_trans_map(const Dialect* d) {
 }
 
 POST_SAVE(script) {
-	ar& obj.dialect->name;
+	ar & obj.dialect->name;
 	make_trans_map(obj.dialect);
 	ar& dialect_trans_map[obj.dialect];
 }
@@ -58,8 +58,8 @@ POST_SAVE(script) {
 POST_LOAD(script) {
 	std::string name;
 	std::shared_ptr<std::vector<std::string> > trans_map;
-	ar& name;
-	ar& trans_map;
+	ar & name;
+	ar & trans_map;
 
 	const Dialect* d = obj.dialect = dialects[name].get();
 	if (!d) {

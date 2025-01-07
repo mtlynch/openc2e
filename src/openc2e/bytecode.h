@@ -66,7 +66,7 @@ enum opcode_t {
 	 * Argument: An integer
 	 */
 	CAOS_CONSTINT,
-	/* Copies the element (argument) elements from the top of the 
+	/* Copies the element (argument) elements from the top of the
 	 * argument stack into the top of the aux stack. The values remain on
 	 * the argument stack.
 	 * Argument: A zero-based index into the argument stack
@@ -103,7 +103,7 @@ enum opcode_t {
 	 * Cost: 0
 	 */
 	CAOS_JMP,
-	/* Pop a value off the stack. If it's nonzero, decrement, push back, 
+	/* Pop a value off the stack. If it's nonzero, decrement, push back,
 	 * and jump to the location in the argument.
 	 * Argument: A bytecode location (relocated).
 	 * Cost: 0

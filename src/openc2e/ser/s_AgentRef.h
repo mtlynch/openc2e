@@ -7,13 +7,13 @@
 
 LOAD(AgentRef) {
 	Agent* agent;
-	ar& agent;
+	ar & agent;
 	obj.set(agent);
 }
 
 SAVE(AgentRef) {
 	Agent* a = obj.get();
-	ar& a;
+	ar & a;
 }
 
 #endif

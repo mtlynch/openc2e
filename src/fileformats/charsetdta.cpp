@@ -52,12 +52,12 @@ static shared_array<Color> getDefaultCharsetPalette() {
  CHARSET.DTA and EuroCharset.dta files. CHARSET.DTA covers 128 ASCII
  or Windows-932 characters (for Japanese), and EuroCharset.dta covers the 256
  Windows-1252 characters.
- 
+
  The file format starts with either 72-byte blocks of character data for each
  character (132-byte blocks for the Japanese version). Within the character data,
  each row is padded out to 6 bytes (11 bytes for the Japanese Version), and each
  character is 12 pixels high.
- 
+
  After the character data, there are either 128 or 256 2-byte integers that
  define the character widths.
 */

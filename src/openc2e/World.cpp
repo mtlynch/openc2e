@@ -443,7 +443,7 @@ void World::drawWorld(Camera* cam, RenderTarget* surface) {
 		if (!a)
 			continue;
 		for (std::map<unsigned int, std::shared_ptr<OutputPort> >::iterator p = a->outports.begin();
-			 p != a->outports.end(); p++) {
+			p != a->outports.end(); p++) {
 			for (PortConnectionList::iterator c = p->second->dests.begin(); c != p->second->dests.end(); c++) {
 				if (!c->first)
 					continue;
@@ -504,8 +504,8 @@ void World::executeInitScript(std::string x) {
 
 	std::ifstream s(x);
 	assert(s.is_open());
-	//std::cout << "executing script " << x << "...\n";
-	//std::cout.flush(); std::cerr.flush();
+	// std::cout << "executing script " << x << "...\n";
+	// std::cout.flush(); std::cerr.flush();
 	try {
 		caosScript script(engine.gametype, x);
 		script.parse(s);

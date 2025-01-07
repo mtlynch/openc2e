@@ -264,7 +264,7 @@ void v_TMVB(caosVM* vm) {
 /**
  TMVT (integer) x (float) y (float)
  %status maybe
- 
+
  Returns 1 if the TARG agent could move to (x, y) and still be in room system, or 0 if otherwise.
 */
 void v_TMVT(caosVM* vm) {
@@ -283,7 +283,7 @@ void v_TMVT(caosVM* vm) {
 /**
  TMVF (integer) x (float) y (float)
  %status stub
- 
+
  Returns 1 if the TARG Creature could move foot to (x, y) and still be in room system, or 0 if otherwise.
 */
 void v_TMVF(caosVM* vm) {
@@ -314,7 +314,7 @@ void c_ACCG(caosVM* vm) {
 /**
  ACCG (float)
  %status maybe
- 
+
  Returns the TARG agent's free-fall acceleration, in pixels/tick squared.
 */
 void v_ACCG(caosVM* vm) {
@@ -328,7 +328,7 @@ void v_ACCG(caosVM* vm) {
  ACCG (variable)
  %status maybe
  %variants c2
- 
+
  Returns the TARG agent's free-fall acceleration, in pixels/tick squared.
 */
 CAOS_LVALUE_TARG_SIMPLE(ACCG_c2, vm->targ->accg)
@@ -422,7 +422,7 @@ void v_RELX_c2(caosVM* vm) {
  RELY (integer)
  %status maybe
  %variants c2
- 
+
  Returns the relative vertical distance between the script owner and the target agent.
 */
 void v_RELY_c2(caosVM* vm) {
@@ -483,8 +483,8 @@ void v_FRIC(caosVM* vm) {
 /**
  FRIC (command) friction (integer)
  %status maybe
- 
- Sets the TARG agent's coefficient of friction, or the percentage of motion that will be lost as it slides on a 
+
+ Sets the TARG agent's coefficient of friction, or the percentage of motion that will be lost as it slides on a
  surface.
 */
 void c_FRIC(caosVM* vm) {
@@ -519,7 +519,7 @@ void v_FALL(caosVM* vm) {
  %status maybe
  %variants c1 c2 cv c3 sm
 
- Returns an integer representing the motion status of the TARG agent.  0 is autonomous, 1 is moving by mouse, 2 is 
+ Returns an integer representing the motion status of the TARG agent.  0 is autonomous, 1 is moving by mouse, 2 is
  floating, 3 is inside a vehicle, and 4 is being carried.
 */
 void v_MOVS(caosVM* vm) {

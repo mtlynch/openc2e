@@ -35,8 +35,8 @@
  PART (command) part_id (integer)
  %status maybe
  %variants c1 c2 cv c3 sm
- 
- Sets the part number of the TARGeted compound agent or vehicle to work on (ANIM/POSE use this, 
+
+ Sets the part number of the TARGeted compound agent or vehicle to work on (ANIM/POSE use this,
  amongst other commands).
 */
 void c_PART(caosVM* vm) {
@@ -130,7 +130,7 @@ void c_PAT_DULL_sm(caosVM* vm) {
 /**
  PAT: BUTT (command) part (integer) sprite (string) first_image (integer) image_count (integer) x (integer) y (integer) plane (integer) hoveranim (bytestring) messageid (integer) option (integer)
  %status maybe
- 
+
  Adds a new 'button' part to the TARGed compound agent/vehicle.
  Part ID numbers begin at 1. x/y/plane are relative to the agent you're working on.
  'hoveranim' is the animation to use when the part is mouse-overed - see ANIM for details.
@@ -195,7 +195,7 @@ void c_PAT_FIXD(caosVM* vm) {
 
  Adds a new text entry part to the TARGed compound agent/vehicle.
  Part ID numbers begin at 1. x/y/plane are relative to the agent you're working on.
- The 'first_image' frame of the given sprite file will be used underneath the text.  The part will 
+ The 'first_image' frame of the given sprite file will be used underneath the text.  The part will
  gain the focus when FCUS is called or when it is clicked.  A message of the given type will be sent.
 */
 void c_PAT_TEXT(caosVM* vm) {
@@ -248,7 +248,7 @@ void c_PAT_CMRA(caosVM* vm) {
  PAT: GRPH (command) part (integer) sprite (string) first_image (integer) x (integer) y (integer) plane (integer) numvalues (integer)
  %status maybe
 
- 
+
 */
 void c_PAT_GRPH(caosVM* vm) {
 	VM_PARAM_INTEGER(numvalues)
@@ -272,7 +272,7 @@ void c_PAT_GRPH(caosVM* vm) {
 /**
  PAT: KILL (command) part (integer)
  %status maybe
- 
+
  Kills the specified part of the TARGed compound agent or vehicle.
 */
 void c_PAT_KILL(caosVM* vm) {
@@ -336,8 +336,8 @@ void c_FCUS(caosVM* vm) {
  FRMT (command) left_margin (integer) top_margin (integer) right_margin (integer) button_margin (integer) line_spacing (integer) char_spacing (integer) justification (integer)
  %status maybe
 
- Alters the appearance of the target text part.  The spacing values and margins are to be specified in 
- pixels.  Justification can be 0 for left, 1 for right, 2 for center, 4 for bottom, 8 for middle or 16 
+ Alters the appearance of the target text part.  The spacing values and margins are to be specified in
+ pixels.  Justification can be 0 for left, 1 for right, 2 for center, 4 for bottom, 8 for middle or 16
  for 'last page scroll' (TODO?), and you can add these together (except 0/1 are mutually exclusive, obviously).
 */
 void c_FRMT(caosVM* vm) {
@@ -380,7 +380,7 @@ void c_FRMT(caosVM* vm) {
 /**
  PTXT (command) text (string)
  %status maybe
- 
+
  Sets the text displayed in the current text part.
 */
 void c_PTXT(caosVM* vm) {
@@ -415,7 +415,7 @@ void v_PTXT(caosVM* vm) {
  PNXT (integer) previous_part (integer)
  %status maybe
 
- Returns the next part of the TARG compound agent or vehicle, (or -1 if you have reached the end, or 
+ Returns the next part of the TARG compound agent or vehicle, (or -1 if you have reached the end, or
  the first part if you go past -1).
 */
 void v_PNXT(caosVM* vm) {
@@ -529,7 +529,7 @@ void c_GRPV(caosVM* vm) {
  GRPL (command) red (integer) green (integer) blue (integer) min (float) max (float)
  %status stub
 
- Add a new line to a graph created with PAT: GRPH with the given 
+ Add a new line to a graph created with PAT: GRPH with the given
  characteristics.
 */
 void c_GRPL(caosVM* vm) {

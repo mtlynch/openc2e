@@ -121,14 +121,14 @@ Image Tint(const Image& oldimage, unsigned char r, unsigned char g, unsigned cha
 		return oldimage; // duh
 
 	/*
-   * CDN:
-   * if rotation >= 128
-   * absRot = rotation-128
-   * else
-   * absRot = 128 - rotation
-   * endif
-   * invRot = 127-absRot
-   */
+	 * CDN:
+	 * if rotation >= 128
+	 * absRot = rotation-128
+	 * else
+	 * absRot = 128 - rotation
+	 * endif
+	 * invRot = 127-absRot
+	 */
 	int absRot;
 	if (rotation >= 128)
 		absRot = (int)rotation - 128;
@@ -137,14 +137,14 @@ Image Tint(const Image& oldimage, unsigned char r, unsigned char g, unsigned cha
 	int invRot = 127 - absRot;
 
 	/*
-   * CDN:
-   * if swap >= 128
-   * absSwap = swap - 128
-   * else
-   * absSwap = 128 - swap
-   * endif
-   * invSwap = 127-absSwap
-   */
+	 * CDN:
+	 * if swap >= 128
+	 * absSwap = swap - 128
+	 * else
+	 * absSwap = 128 - swap
+	 * endif
+	 * invSwap = 127-absSwap
+	 */
 	int absSwap;
 	if (swap >= 128)
 		absSwap = (int)swap - 128;
@@ -153,11 +153,11 @@ Image Tint(const Image& oldimage, unsigned char r, unsigned char g, unsigned cha
 	int invSwap = 127 - absSwap;
 
 	/*
-   * CDN:
-   * redTint = red-128
-   * greenTint = green-128
-   * blueTint = blue-128
-   */
+	 * CDN:
+	 * redTint = red-128
+	 * greenTint = green-128
+	 * blueTint = blue-128
+	 */
 
 	int redTint = (int)r - 128;
 	int greenTint = (int)g - 128;
@@ -184,17 +184,17 @@ Image Tint(const Image& oldimage, unsigned char r, unsigned char g, unsigned cha
 			 * tempBlue = BlueValue + blueTint;
 			 */
 			// TODO: should this work differently for 565 vs 555 color?
-			int red = (((uint32_t)(v)&0xf800) >> 8) + redTint;
+			int red = (((uint32_t)(v) & 0xf800) >> 8) + redTint;
 			if (red < 0)
 				red = 0;
 			else if (red > 255)
 				red = 255;
-			int green = (((uint32_t)(v)&0x07e0) >> 3) + greenTint;
+			int green = (((uint32_t)(v) & 0x07e0) >> 3) + greenTint;
 			if (green < 0)
 				green = 0;
 			else if (green > 255)
 				green = 255;
-			int blue = (((uint32_t)(v)&0x001f) << 3) + blueTint;
+			int blue = (((uint32_t)(v) & 0x001f) << 3) + blueTint;
 			if (blue < 0)
 				blue = 0;
 			else if (blue > 255)

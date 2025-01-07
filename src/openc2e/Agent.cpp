@@ -241,7 +241,7 @@ void Agent::addFloated(AgentRef a) {
 void Agent::delFloated(AgentRef a) {
 	assert(a);
 	std::vector<AgentRef>::iterator i = std::find(floated.begin(), floated.end(), a);
-	//if (i == floated.end()) return;
+	// if (i == floated.end()) return;
 	assert(i != floated.end());
 	floated.erase(i);
 }
@@ -653,7 +653,7 @@ void Agent::physicsTick() {
 	if (sufferphysics()) {
 		// TODO: falling behaviour needs looking at more closely..
 		// .. but it shouldn't be 'false' by default on non-physics agents, so..
-		//falling = false;
+		// falling = false;
 		// increase speed according to accg
 		// TODO: should we be changing vely first, instead of after a successful move (below)?
 		desty += accg;
@@ -681,7 +681,7 @@ void Agent::physicsTick() {
 					static bool tryingmove;
 					tryingmove = false; // avoid infinite loop
 					if (!tryingmove && tryMoveToPlaceAround(x, y)) {
-						//std::cout << identify() << " was out of room system due to a physics bug but we hopefully moved it back in.." << std::endl;
+						// std::cout << identify() << " was out of room system due to a physics bug but we hopefully moved it back in.." << std::endl;
 						tryingmove = true;
 						physicsTick();
 						return;

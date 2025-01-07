@@ -20,7 +20,7 @@
 #include "caosVM.h"
 
 /**
- NET: PASS (command) nick_name (string) password (string) 
+ NET: PASS (command) nick_name (string) password (string)
  %status stub
 
  Networking is not supported in openc2e, so does nothing.
@@ -112,7 +112,7 @@ void v_NET_USER(caosVM* vm) {
 /**
  NET: FROM (string) resource_name (string)
  %status stub
- 
+
  Networking is not supported in openc2e, so returns an empty string.
 */
 void v_NET_FROM(caosVM* vm) {
@@ -217,7 +217,7 @@ void c_NET_UNIK(caosVM* vm) {
 /**
  NET: WHAT (string)
  %status stub
- 
+
  Networking is not supported in openc2e, so return an empty string.
 */
 void v_NET_WHAT(caosVM* vm) {
@@ -246,7 +246,7 @@ void c_NET_WHOF(caosVM* vm) {
 /**
  NET: WRIT (command) userid (string) channel (string) messageid (string) param1 (anything) param2 (anything)
  %status stub
- 
+
  Networking is not supported in openc2e, so does nothing.
 */
 void c_NET_WRIT(caosVM* vm) {

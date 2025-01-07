@@ -681,7 +681,7 @@ void SkeletalCreature::tick() {
 	if (ticks % 2 == 0)
 		return;
 
-	//if (eyesclosed) return; // TODO: hack, this is wrong :)
+	// if (eyesclosed) return; // TODO: hack, this is wrong :)
 
 	// TODO: hack!
 	if (!eyesclosed && !creature->isZombie()) {
@@ -806,7 +806,7 @@ std::string SkeletalCreature::getFaceSpriteName() {
 	// TODO: we should store the face sprite when we first search for sprites (since it
 	// has to be the baby sprite), rather than this horrible hackery
 	for (auto& gene : creature->getGenome()->genes) {
-		//if ((*i)->header.switchontime != creature->getStage()) continue;
+		// if ((*i)->header.switchontime != creature->getStage()) continue;
 
 		if (creatureAppearanceGene* x = dynamic_cast<creatureAppearanceGene*>(gene.get())) {
 			if (x->part == 0) {

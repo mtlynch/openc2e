@@ -10,14 +10,14 @@ import math
 import struct
 
 types = [
-    ("uint8_t", 0, 255),
-    ("int8_t", -128, 127),
-    ("uint16_t", 0, 65535),
-    ("int16_t", -32768, 32767),
-    ("uint32_t", 0, 4294967295),
-    ("int32_t", -2147483648, 2147483647),
-    ("uint64_t", 0, 18446744073709551615),
-    ("int64_t", -9223372036854775808, 9223372036854775807)
+	("uint8_t", 0, 255),
+	("int8_t", -128, 127),
+	("uint16_t", 0, 65535),
+	("int16_t", -32768, 32767),
+	("uint32_t", 0, 4294967295),
+	("int32_t", -2147483648, 2147483647),
+	("uint64_t", 0, 18446744073709551615),
+	("int64_t", -9223372036854775808, 9223372036854775807)
 ]
 
 from_only_types = [
@@ -25,69 +25,69 @@ from_only_types = [
 ]
 
 def literal(type, value):
-    if type != "float":
-        value = int(value)
-    if type == "uint64_t":
-        return f"{value}ull"
-    if type == "int64_t":
-        if value == -9223372036854775808:
-            return f"-9223372036854775807ll - 1ll"
-        return f"{value}ll"
-    if type == "float":
-        return f"{value:f}f"
-    return f"{value}"
+	if type != "float":
+		value = int(value)
+	if type == "uint64_t":
+		return f"{value}ull"
+	if type == "int64_t":
+		if value == -9223372036854775808:
+			return f"-9223372036854775807ll - 1ll"
+		return f"{value}ll"
+	if type == "float":
+		return f"{value:f}f"
+	return f"{value}"
 
 def nextafter(x, direction):
-    x = struct.unpack('f', struct.pack('f', x))[0]
-    epsilon  = math.ldexp(1.0, -24)
-    m, e = math.frexp(x)
-    if direction > 0:
-        m += epsilon
-    else:
-        m -= epsilon
-    return math.ldexp(m, e)
+	x = struct.unpack('f', struct.pack('f', x))[0]
+	epsilon  = math.ldexp(1.0, -24)
+	m, e = math.frexp(x)
+	if direction > 0:
+		m += epsilon
+	else:
+		m -= epsilon
+	return math.ldexp(m, e)
 
 def lower(type, value):
-    if type == 'float':
-        while True:
-            packed = struct.unpack('f', struct.pack('f', value))[0]
-            if packed <= value:
-                return packed
-            value = nextafter(value, float("-inf"))
-    return value
+	if type == 'float':
+		while True:
+			packed = struct.unpack('f', struct.pack('f', value))[0]
+			if packed <= value:
+				return packed
+			value = nextafter(value, float("-inf"))
+	return value
 
 def higher(type, value):
-    if type == 'float':
-        while True:
-            packed = struct.unpack('f', struct.pack('f', value))[0]
-            if packed >= value:
-                return packed
-            value = nextafter(value)
-    return value
+	if type == 'float':
+		while True:
+			packed = struct.unpack('f', struct.pack('f', value))[0]
+			if packed >= value:
+				return packed
+			value = nextafter(value)
+	return value
 
 for to, to_low, to_high in types:
-    for from_, from_low, from_high in types + from_only_types:
-        print("TEST(NumericCast, " + from_.replace('_t', '') + "_to_" + to.replace('_t', '') + ") {")
-        print(f"\t{from_} value;")
+	for from_, from_low, from_high in types + from_only_types:
+		print("TEST(NumericCast, " + from_.replace('_t', '') + "_to_" + to.replace('_t', '') + ") {")
+		print(f"\t{from_} value;")
 
-        if from_low < to_low:
-            print("\tvalue = {};".format(literal(from_, lower(from_, to_low - 1))))
-            print(f"\tEXPECT_THROW(numeric_cast<{to}>(value), std::overflow_error);")
-            print("\tvalue = {};".format(literal(from_, higher(from_, to_low))))
-            print("\tEXPECT_EQ(numeric_cast<{}>(value), {});".format(to, literal(to, higher(from_, to_low))))
-        else:
-            print("\tvalue = {};".format(literal(from_, from_low)))
-            print("\tEXPECT_EQ(numeric_cast<{}>(value), {});".format(to, literal(to, from_low)))
-        if from_high > to_high:
-            print("\tvalue = {};".format(literal(from_, higher(from_, to_high + 1))))
-            print(f"\tEXPECT_THROW(numeric_cast<{to}>(value), std::overflow_error);")
-            print("\tvalue = {};".format(literal(from_, lower(from_, to_high))))
-            print("\tEXPECT_EQ(numeric_cast<{}>(value), {});".format(to, literal(to, lower(from_, to_high))))
-        else:
-            print("\tvalue = {};".format(literal(from_, from_high)))
-            print("\tEXPECT_EQ(numeric_cast<{}>(value), {});".format(to, literal(to, from_high)))
-        print("}")
-        print()
+		if from_low < to_low:
+			print("\tvalue = {};".format(literal(from_, lower(from_, to_low - 1))))
+			print(f"\tEXPECT_THROW(numeric_cast<{to}>(value), std::overflow_error);")
+			print("\tvalue = {};".format(literal(from_, higher(from_, to_low))))
+			print("\tEXPECT_EQ(numeric_cast<{}>(value), {});".format(to, literal(to, higher(from_, to_low))))
+		else:
+			print("\tvalue = {};".format(literal(from_, from_low)))
+			print("\tEXPECT_EQ(numeric_cast<{}>(value), {});".format(to, literal(to, from_low)))
+		if from_high > to_high:
+			print("\tvalue = {};".format(literal(from_, higher(from_, to_high + 1))))
+			print(f"\tEXPECT_THROW(numeric_cast<{to}>(value), std::overflow_error);")
+			print("\tvalue = {};".format(literal(from_, lower(from_, to_high))))
+			print("\tEXPECT_EQ(numeric_cast<{}>(value), {});".format(to, literal(to, lower(from_, to_high))))
+		else:
+			print("\tvalue = {};".format(literal(from_, from_high)))
+			print("\tEXPECT_EQ(numeric_cast<{}>(value), {});".format(to, literal(to, from_high)))
+		print("}")
+		print()
 */
 
 TEST(NumericCast, uint8_to_uint8) {

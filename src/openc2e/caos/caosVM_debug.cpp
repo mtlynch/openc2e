@@ -57,7 +57,7 @@ void c_DBG_OUTS(caosVM* vm) {
  DBG: OUTV (command) val (decimal)
  %status maybe
  %variants c3 cv sm openc2e
- 
+
  Outputs a decimal value to the debug log.
 */
 /**
@@ -197,7 +197,7 @@ void c_DBG_TRACE(caosVM* vm) {
 /**
  MANN (command) cmd (string)
  %status stub
- 
+
  Looks up documentation on the given command and spits it on the current output stream.
 */
 void c_MANN(caosVM* vm) {
@@ -362,7 +362,7 @@ void c_DBG_TSLC(caosVM* vm) {
  DBG: TSLC (integer)
  %status ok
  %variants openc2e
- 
+
  Returns the number of ticks left in the current script's remaining timeslice.
 */
 void v_DBG_TSLC(caosVM* vm) {

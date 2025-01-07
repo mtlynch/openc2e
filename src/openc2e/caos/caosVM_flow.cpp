@@ -34,8 +34,8 @@
  %status maybe
  %variants c1 c2 cv c3 sm
  %stackdelta 0
- 
- Part of a DOIF/ELIF/ELSE/ENDI block. Jumps to the next part of the block if condition is false, 
+
+ Part of a DOIF/ELIF/ELSE/ENDI block. Jumps to the next part of the block if condition is false,
  otherwise continues executing the script.
 */
 void c_DOIF(caosVM*) {
@@ -47,7 +47,7 @@ void c_DOIF(caosVM*) {
  %variants c3 cv sm openc2e
  %status maybe
  %stackdelta 0
- 
+
  Part of a DOIF/ELIF/ELSE/ENDI block. If none of the previous DOIF/ELIF conditions have been true, and condition evaluates to true, then the code in the ELIF block is executed.
  If found outside a DOIF block, it is equivalent to a DOIF. If you take advantage of this behavior, fuzzie is of the opinion that you should be shot.
 */
@@ -60,7 +60,7 @@ void c_ELIF(caosVM*) {
  ELSE (command)
  %status maybe
  %variants c1 c2 cv c3 sm
- 
+
  Part of a DOIF/ELIF/ELSE/ENDI block. If ELSE is present, it is jumped to when none of the previous DOIF/ELIF conditions are true.
 */
 void c_ELSE(caosVM*) {
@@ -71,7 +71,7 @@ void c_ELSE(caosVM*) {
  ENDI (command)
  %status maybe
  %variants c1 c2 cv c3 sm
- 
+
  The end of a DOIF/ELIF/ELSE/ENDI block.
 */
 void c_ENDI(caosVM*) {
@@ -109,7 +109,7 @@ void c_REPE(caosVM*) {
  LOOP (command)
  %status maybe
  %variants c1 c2 cv c3 sm
- 
+
  The start of a LOOP...EVER or LOOP...UNTL loop.
 */
 void c_LOOP(caosVM*) {
@@ -120,7 +120,7 @@ void c_LOOP(caosVM*) {
  EVER (command)
  %status maybe
  %variants c1 c2 cv c3 sm
- 
+
  Jumps back to the matching LOOP, no matter what.
 */
 void c_EVER(caosVM*) {
@@ -132,7 +132,7 @@ void c_EVER(caosVM*) {
  %status maybe
  %stackdelta 0
  %variants c1 c2 cv c3 sm
- 
+
  Jumps back to the matching LOOP unless the condition evaluates to true.
 */
 void c_UNTL(caosVM*) {
@@ -144,7 +144,7 @@ void c_UNTL(caosVM*) {
  %stackdelta 0
  %status maybe
  %variants c1 c2 cv c3 sm
- 
+
  Jumps to a subroutine defined by SUBR with label (label).
 */
 void c_GSUB(caosVM*) {
@@ -157,7 +157,7 @@ void c_GSUB(caosVM*) {
  %status maybe
  %stackdelta 0
  %variants c1 c2 cv c3 sm
- 
+
  Defines the start of a subroute to be called with GSUB, with label (label).
  If the command is encountered during execution, it acts like a STOP.
 */
@@ -170,7 +170,7 @@ void c_SUBR(caosVM*) {
  %stackdelta any
  %status maybe
  %variants c1 c2 cv c3 sm
- 
+
  Returns from a subroutine called with GSUB.
 */
 void c_RETN(caosVM* vm) {
@@ -252,7 +252,7 @@ void c_ENUM(caosVM* vm) {
  %status maybe
  %stackdelta any
  %variants c2 cv c3 sm
- 
+
  Simular to ENUM, but iterates through agents visible to OWNR, or visible to TARG in an install script.
  An agent can be seen if it is within the range set by RNGE, and is visible (this includes the PERM value
  of walls that lie between them, and, if the agent is a Creature, it not having the 'invisible' attribute).
@@ -438,7 +438,7 @@ void c_ESCN(caosVM* vm) {
  will inherit the caller's INST setting, but any changes it makes to it will
  be reversed once it returns - so eg if you call a script when in INST mode,
  it calls OVER and returns, you'll still be in INST.
- 
+
  Script variables (VAxx) will not be preserved - you'll have to use OVxx
  for any parameters.
  */
@@ -468,7 +468,7 @@ void c_CALL(caosVM* vm) {
  CAOS (string) inline (integer) state_trans (integer) p1 (anything) p2 (anything) commands (string) throws (integer) catches (integer) report (variable)
  %status maybe
 
- Runs commands as caos code immediately. If inline, copy _IT_ VAxx TARG OWNR, etc. If state_trans, copy FROM and 
+ Runs commands as caos code immediately. If inline, copy _IT_ VAxx TARG OWNR, etc. If state_trans, copy FROM and
  OWNR.  If an error occurs, it catches it and stuffs it in the report. (XXX: non-conforming)
 */
 

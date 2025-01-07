@@ -25,7 +25,7 @@ class BadExpectedAccess<void> {};
 template <class Error>
 class Unexpected {
   public:
-	Unexpected(){};
+	Unexpected() {};
 	Unexpected(const Error& t)
 		: value_(t) {}
 	Unexpected(Error&& t)

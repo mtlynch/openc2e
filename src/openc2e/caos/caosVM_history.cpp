@@ -340,9 +340,9 @@ void v_HIST_TAGE(caosVM* vm) {
 /**
  HIST TYPE (integer) moniker (string) event (integer)
  %status maybe
- 
+
  For the given life event, return it's type.
- 
+
  All histories begin with one of the following four events. You can read the associated monikers with HIST MON1 and HIST MON2.
  0 Conceived - a natural start to life, associated monikers are the mother's and father's
  1 Spliced - created using GENE CROS to crossover the two associated monikers

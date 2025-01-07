@@ -33,7 +33,7 @@ namespace fs = ghc::filesystem;
  OUTX (command) val (string)
  %status maybe
 
- Prints the given string on the output stream, after first quoting it and transforming 
+ Prints the given string on the output stream, after first quoting it and transforming
  escapes in the string to quoted escapes.
 */
 void c_OUTX(caosVM* vm) {
@@ -147,7 +147,7 @@ void c_RGAM(caosVM*) {
 /**
  GAMN (string) previous (string)
  %status maybe
- 
+
  Enumerates through game variable names, starting and ending with an empty string.
 */
 void v_GAMN(caosVM* vm) {
@@ -194,7 +194,7 @@ CAOS_LVALUE(EAME, VM_PARAM_STRING(name),
 /**
  EAMN (string) previous (string)
  %status maybe
- 
+
  Enumerates through engine variable names, starting and ending with an empty string.
 */
 void v_EAMN(caosVM* vm) {
@@ -220,7 +220,7 @@ void v_EAMN(caosVM* vm) {
 /**
  DELE (command) name (string)
  %status maybe
- 
+
  Deletes the engine variable with the given name.
 */
 void c_DELE(caosVM* vm) {
@@ -233,7 +233,7 @@ void c_DELE(caosVM* vm) {
  %status done
  %variants c1 c2 cv c3 sm
 
- Marks the beginning of a normal script applying to the agent with the given classifier 
+ Marks the beginning of a normal script applying to the agent with the given classifier
  info.
 */
 void c_SCRP(caosVM*) {
@@ -346,7 +346,7 @@ void v_VRSN(caosVM* vm) {
 
  This returns/sets some engine settings which are useful for 'wolfing runs', among other things.
  Set andmask for the information you want returned, and eormask for the information you want changed.
- 
+
  1 is for display rendering (turn it off to speed up the game)
  2 is for running ticks as fast as possible, rather than according to BUZZ
  4 is for refreshing the display (when display rendering is turned off, this will update the display at the end of the tick)

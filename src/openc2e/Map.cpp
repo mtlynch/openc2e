@@ -185,7 +185,7 @@ bool Map::collideLineWithRoomSystem(Point src, Point dest, std::shared_ptr<Room>
 bool Map::collideLineWithRoomBoundaries(Point src, Point dest, std::shared_ptr<Room> room, std::shared_ptr<Room>& newroom, Point& where, Line& wall, unsigned int& walldir, int perm) {
 	assert(room);
 	// TODO: this assert fails. why? 'where' is presumably outside the dest room sometimes.. mmh
-	//assert(room->containsPoint(src.x, src.y));
+	// assert(room->containsPoint(src.x, src.y));
 	if (src == dest)
 		return false;
 
@@ -219,7 +219,7 @@ bool Map::collideLineWithRoomBoundaries(Point src, Point dest, std::shared_ptr<R
 			}
 			assert(movement.containsPoint(temppoint));
 
-			//if (temppoint == src) return false; // for debug use: sneakily fail all movement between rooms
+			// if (temppoint == src) return false; // for debug use: sneakily fail all movement between rooms
 
 			// see if this is nearer than any previous points we've found
 			double distx = temppoint.x - src.x;

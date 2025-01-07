@@ -235,7 +235,7 @@ void PointerAgent::handleEvent(BackendEvent& event) {
 				bool foundport = false;
 				if (engine.version > 2) {
 					for (std::map<unsigned int, std::shared_ptr<OutputPort> >::iterator i = parent->outports.begin();
-						 i != parent->outports.end(); i++) {
+						i != parent->outports.end(); i++) {
 						// TODO: 4 is a magic number i pulled out of nooooowhere
 						if (abs(i->second->x + parent->x - x) < 4 && abs(i->second->y + parent->y - y) < 4) {
 							foundport = true;
@@ -254,7 +254,7 @@ void PointerAgent::handleEvent(BackendEvent& event) {
 					}
 					if (!foundport) {
 						for (std::map<unsigned int, std::shared_ptr<InputPort> >::iterator i = parent->inports.begin();
-							 i != parent->inports.end(); i++) {
+							i != parent->inports.end(); i++) {
 							// TODO: 4 is a magic number i pulled out of nooooowhere
 							if (abs(i->second->x + parent->x - x) < 4 && abs(i->second->y + parent->y - y) < 4) {
 								foundport = true;

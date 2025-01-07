@@ -137,7 +137,7 @@ bool VoiceData::NextSyllableFor(std::vector<unsigned int>& sentence, unsigned in
 	/*
 	 * The idea behind the voice generator is to work in groups of three letters (a 'syllable')
 	 * and, for each syllable, to transform the sum of the letters into an entry in the voice list.
-         *
+	 *
 	 * Voices 0-3 are for syllables in the form 'a b' (so between words; just for delaying),
 	 * voices 4-10 for ' ab' (start of a word), voices 11-17 for 'ab ' (end of a word) and voices
 	 * 18-31 for 'abc' (so, in the middle of a word).

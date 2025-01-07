@@ -91,7 +91,9 @@ AllocationCounterHeap<T> AllocationCounterHeap<T>::counter;
 	AllocationToken<classname> at__; \
 	friend class AllocationCounterMain<classname>; \
 	friend class AllocationCounterHeap<classname>; \
-	static const char* at__getname() { return #classname; } \
+	static const char* at__getname() { \
+		return #classname; \
+	} \
 \
   public: \
 	static void* operator new(size_t len) throw(std::bad_alloc) { \

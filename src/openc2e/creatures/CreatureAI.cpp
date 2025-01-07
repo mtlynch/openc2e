@@ -117,12 +117,12 @@ void c2eCreature::tickBrain() {
 			verblobe->setNeuronInput(i, 0.0f); // TODO
 		}
 	}
-	
+
 	c2eLobe *nounlobe = brain->getLobeById("noun");
 	if (nounlobe) {
 		for (unsigned int i = 0; i < nounlobe->getNoNeurons(); i++) {
 			nounlobe->setNeuronInput(i, 0.0f); // TODO
-		}	
+		}
 	}*/
 
 #ifndef _CREATURE_STANDALONE
@@ -323,8 +323,8 @@ bool c2eCreature::processInstinct() {
 	for (auto& lobe : brain->lobes)
 		lobe.second->wipe();
 
-	//std::cout << "*** instinct done" << std::endl;
-	//std::cout << std::endl;
+	// std::cout << "*** instinct done" << std::endl;
+	// std::cout << std::endl;
 
 	return true;
 }

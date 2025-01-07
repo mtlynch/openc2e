@@ -272,7 +272,7 @@ void c_PRT_OZAP(caosVM* vm) {
 /**
  PRT: SEND (command) id (integer) data (anything)
  %status maybe
- 
+
  Sends information over targ's output port.
 */
 void c_PRT_SEND(caosVM* vm) {

@@ -507,7 +507,7 @@ void SFCEntity::read() {
 void SFCObject::read() {
 	// read genus, family and species
 	if (parent->version() == 0) {
-		//sfccheck(read8() == 0);
+		// sfccheck(read8() == 0);
 		read8(); // discard unused portion of CLAS, i guess (so far has been 0 or 255)
 		species = read8();
 		genus = read8();
@@ -849,7 +849,7 @@ void SFCFile::copyToWorld() {
 				if (a->var[varno].hasInt()) {
 					a->var[varno].setAgent(0);
 					// This is useful to enable when you're testing a new patch.
-					//std::cout << "Warning: Couldn't apply agent patch #" << j << "!" << std::endl;
+					// std::cout << "Warning: Couldn't apply agent patch #" << j << "!" << std::endl;
 				}
 			}
 		}
@@ -1044,7 +1044,7 @@ void SFCSimpleObject::copyToWorld() {
 	SimpleAgent* a = ourAgent;
 
 	a->finishInit();
-	//a->moveTo(entity->x - (a->part(0)->getWidth() / 2), entity->y - (a->part(0) -> getHeight() / 2));
+	// a->moveTo(entity->x - (a->part(0)->getWidth() / 2), entity->y - (a->part(0) -> getHeight() / 2));
 	a->moveTo(entity->x, entity->y);
 	a->queueScript(7); // enter scope
 
@@ -1194,7 +1194,7 @@ void SFCScenery::copyToWorld() {
 	SimpleAgent* a = ourAgent;
 
 	a->finishInit();
-	//a->moveTo(entity->x - (a->part(0)->getWidth() / 2), entity->y - (a->part(0) -> getHeight() / 2));
+	// a->moveTo(entity->x - (a->part(0)->getWidth() / 2), entity->y - (a->part(0) -> getHeight() / 2));
 	a->moveTo(entity->x, entity->y);
 	a->queueScript(7); // enter scope
 

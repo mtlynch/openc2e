@@ -34,14 +34,14 @@ using std::cerr;
  %status maybe
  %variants c1 c2 cv c3 sm
 
- Forces the following commands to be executed in one tick, rather than scheduling them, until SLOW or the end 
+ Forces the following commands to be executed in one tick, rather than scheduling them, until SLOW or the end
  of the script is encountered.
  */
 void c_INST(caosVM* vm) {
 	VM_VERIFY_SIZE(0)
 	vm->inst = true;
 	// TODO: do we need a state similar to locked? i commented it out because it doesn't seem right - fuzzie
-	//locked = true;
+	// locked = true;
 }
 
 /**

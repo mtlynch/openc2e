@@ -103,8 +103,8 @@ class Line {
 			bool is_x = fabs(start.x - p.x) < 1;
 			bool is_y = containsY(p.y);
 			// TODO
-			//bool is_v = (start.x > (p.x + 0.5)) && (start.x < (p.x - 0.5));
-			//bool is_h = (start.y > (p.y + 0.5)) && (start.y < (p.y - 0.5));
+			// bool is_v = (start.x > (p.x + 0.5)) && (start.x < (p.x - 0.5));
+			// bool is_h = (start.y > (p.y + 0.5)) && (start.y < (p.y - 0.5));
 			return (is_x && is_y);
 		} else if (type == HORIZONTAL) {
 			bool is_y = fabs(start.y - p.y) < 1;

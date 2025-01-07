@@ -44,7 +44,7 @@
  %stackdelta 0
  %variants c2 cv c3 sm
 
- Script-local variables (exist only in the current script) with xx being from 00 to 99.  Examples: VA01, VA45. 
+ Script-local variables (exist only in the current script) with xx being from 00 to 99.  Examples: VA01, VA45.
  */
 /**
  VARx (variable)
@@ -55,10 +55,10 @@
  Like VAxx, but restricted to 0-9. Legacy from Creatures 1.
 */
 CAOS_LVALUE(VAxx,
-			VM_PARAM_INTEGER(index);
-			THROW_IFNOT(index >= 0 && index < 100),
-			vm->var[index],
-			vm->var[index] = newvalue)
+	VM_PARAM_INTEGER(index);
+	THROW_IFNOT(index >= 0 && index < 100),
+	vm->var[index],
+	vm->var[index] = newvalue)
 
 /**
  MVxx (variable)
@@ -68,10 +68,10 @@ CAOS_LVALUE(VAxx,
  Like OVxx, only for OWNR, not TARG.
  */
 CAOS_LVALUE_WITH(MVxx, vm->owner,
-				 VM_PARAM_INTEGER(index);
-				 THROW_IFNOT(index >= 0 && index < 100),
-				 vm->owner->var[index],
-				 vm->owner->var[index] = newvalue)
+	VM_PARAM_INTEGER(index);
+	THROW_IFNOT(index >= 0 && index < 100),
+	vm->owner->var[index],
+	vm->owner->var[index] = newvalue)
 
 /**
  ADDS (command) var (variable) value (string)
@@ -113,7 +113,7 @@ void c_SETS(caosVM* vm) {
 void c_SETV(caosVM* vm) {
 	VM_VERIFY_SIZE(2)
 	// TODO: hackery for c2
-	//VM_PARAM_DECIMAL(value)
+	// VM_PARAM_DECIMAL(value)
 	VM_PARAM_VALUE(value)
 	VM_PARAM_VARIABLE(var)
 	var->reset();
@@ -164,10 +164,10 @@ void c_SETA(caosVM* vm) {
 */
 // TODO: restrict to 0-2 in C1?
 CAOS_LVALUE_TARG(OVxx,
-				 VM_PARAM_INTEGER(index);
-				 THROW_IFNOT(index >= 0 && index < 100),
-				 vm->targ->var[index],
-				 vm->targ->var[index] = newvalue)
+	VM_PARAM_INTEGER(index);
+	THROW_IFNOT(index >= 0 && index < 100),
+	vm->targ->var[index],
+	vm->targ->var[index] = newvalue)
 
 /**
  TYPE (integer) value (anything)
@@ -319,7 +319,7 @@ void c_NEGV(caosVM* vm) {
  DIVV (command) var (variable) div (decimal)
  %status maybe
  %variants c1 c2 cv c3 sm
- 
+
  Divides the given variable by the given integer and returns the result.
 */
 void c_DIVV(caosVM* vm) {
@@ -393,7 +393,7 @@ void c_REAF(caosVM*) {
 /**
  UFOS (string)
  %status stub
- 
+
  Returns 'uname -a' on platforms which support it, or OS details in another format otherwise.
 */
 void v_UFOS(caosVM* vm) {
@@ -411,14 +411,14 @@ void v_UFOS(caosVM* vm) {
 void v_MODU(caosVM* vm) {
 	VM_VERIFY_SIZE(0)
 	vm->result.setString(engine.getBackendName() + ", " + engine.getAudioBackendName());
-	//result.setString("OriginalDisplay SDL (netbabel 148)"); // TODO
+	// result.setString("OriginalDisplay SDL (netbabel 148)"); // TODO
 }
 
 /**
  GNAM (string)
  %status maybe
  %variants c3 cv sm openc2e
- 
+
  Returns the currently-running game (like "Creatures 1" or "Docking Station").
 */
 void v_GNAM(caosVM* vm) {
@@ -429,7 +429,7 @@ void v_GNAM(caosVM* vm) {
 /**
  ABSV (command) var (variable)
  %status maybe
- 
+
  Modifies the given variable, if negative, so that its value is positive (absolute value).
 */
 void c_ABSV(caosVM* vm) {
@@ -447,7 +447,7 @@ void c_ABSV(caosVM* vm) {
 /**
  ACOS (float) x (float)
  %status maybe
- 
+
  Returns the arccosine of x in degrees.
 */
 void v_ACOS(caosVM* vm) {
@@ -463,7 +463,7 @@ void v_ACOS(caosVM* vm) {
 /**
  ASIN (float) x (float)
  %status maybe
- 
+
  Returns the arcsine of x in degrees.
 */
 void v_ASIN(caosVM* vm) {
@@ -479,7 +479,7 @@ void v_ASIN(caosVM* vm) {
 /**
  ATAN (float) x (float)
  %status maybe
- 
+
  Returns the arctangent of x in degrees.
 */
 void v_ATAN(caosVM* vm) {
@@ -495,7 +495,7 @@ void v_ATAN(caosVM* vm) {
 /**
  COS_ (float) x (float)
  %status maybe
- 
+
  Returns the cosine of x in degrees.
 */
 void v_COS_(caosVM* vm) {
@@ -510,7 +510,7 @@ void v_COS_(caosVM* vm) {
 /**
  SIN_ (float) x (float)
  %status maybe
- 
+
  Returns the sine of x in degrees.
 */
 void v_SIN_(caosVM* vm) {
@@ -526,7 +526,7 @@ void v_SIN_(caosVM* vm) {
 /**
  TAN_ (float) x (float)
  %status maybe
- 
+
  Returns the tangent of x in degrees.
 */
 void v_TAN_(caosVM* vm) {
@@ -542,7 +542,7 @@ void v_TAN_(caosVM* vm) {
 /**
  SQRT (float) v (float)
  %status maybe
- 
+
  Returns the square root of v.
 */
 void v_SQRT(caosVM* vm) {
@@ -579,13 +579,13 @@ CAOS_LVALUE_SIMPLE(P2, vm->_p_[1])
  Returns the value of OVxx for the given agent, where xx is equal to 'index'.
 */
 CAOS_LVALUE(AVAR,
-			VM_VERIFY_SIZE(2)
-				VM_PARAM_INTEGER(index)
-					VM_PARAM_AGENT(agent)
-						THROW_IFNOT(index >= 0 && index < 100);
-			valid_agent(agent),
-			agent->var[index],
-			agent->var[index] = newvalue)
+	VM_VERIFY_SIZE(2)
+		VM_PARAM_INTEGER(index)
+			VM_PARAM_AGENT(agent)
+				THROW_IFNOT(index >= 0 && index < 100);
+	valid_agent(agent),
+	agent->var[index],
+	agent->var[index] = newvalue)
 
 /**
  VTOS (string) value (decimal)
@@ -628,7 +628,7 @@ void v_CHAR(caosVM* vm) {
  %status maybe
 
  Sets the character at position 'index' of the given string.
- Indexes start at 1. 
+ Indexes start at 1.
 */
 void c_CHAR(caosVM* vm) {
 	VM_PARAM_INTEGER(character)
@@ -913,7 +913,7 @@ void v_SINS(caosVM* vm) {
 /**
  REAN (integer) tag (string)
  %status maybe
- 
+
  Return number of strings associated with the catalogue tag specified.
 */
 void v_REAN(caosVM* vm) {
@@ -1017,7 +1017,7 @@ void v_EGGL(caosVM* vm) {
  HATL (integer)
  %status stub
  %variants c2
- 
+
  Returns the hatchery limit - when there are more than this many norns in the world, the hatchery should shut down.
 */
 void v_HATL(caosVM* vm) {

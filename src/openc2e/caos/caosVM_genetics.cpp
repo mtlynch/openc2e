@@ -30,7 +30,7 @@
 /**
  GENE CLON (command) dest_agent (agent) dest_slot (integer) src_agent (agent) src_slot (integer)
  %status stub
- 
+
  Clone a genome. A new moniker is created.
 */
 void c_GENE_CLON(caosVM* vm) {
@@ -123,7 +123,7 @@ void c_GENE_MOVE(caosVM* vm) {
 /**
  GTOS (string) slot (integer)
  %status maybe
- 
+
  Return the moniker stored in the given gene slot of the target agent.
 */
 void v_GTOS(caosVM* vm) {

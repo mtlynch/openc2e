@@ -67,7 +67,7 @@ bool agentOnCamera(Agent* targ, bool checkall) {
  VISI (integer) checkall (integer)
  %status maybe
 
- Returns 1 if the TARG agent is on camera, or 0 otherwise. If checkall is 0, only checks 
+ Returns 1 if the TARG agent is on camera, or 0 otherwise. If checkall is 0, only checks
  main camera, otherwise checks all.
 */
 void v_VISI(caosVM* vm) {
@@ -85,7 +85,7 @@ void v_VISI(caosVM* vm) {
  ONTV (integer) agent (agent) checkall (integer)
  %status maybe
 
- Returns 1 if the specified agent is on camera, or 0 otherwise. If checkall is 0, only checks 
+ Returns 1 if the specified agent is on camera, or 0 otherwise. If checkall is 0, only checks
  main camera, otherwise checks all.
 */
 void v_ONTV(caosVM* vm) {
@@ -101,10 +101,10 @@ void v_ONTV(caosVM* vm) {
 /**
  META (command) metaroom_id (integer) camera_x (integer) camera_y (integer) transition (integer)
  %status maybe
- 
+
  Sets the metaroom that the current camera is pointing at.  Coordinates point to top left of new
  camera position.  Set a coordinate to -1 to use the top-left corner of the metaroom.
- 
+
  Transition: 0 for none, 1 for flip horzizontally, 2 for burst.
  */
 void c_META(caosVM* vm) {
@@ -149,7 +149,7 @@ void v_META(caosVM* vm) {
 
  Focuses the current camera on the TARG agent.
 
- Set pan to 0 for no panning (jump), 1 for smooth scrolling if in the same metaroom, or 2 
+ Set pan to 0 for no panning (jump), 1 for smooth scrolling if in the same metaroom, or 2
  for smooth scrolling if the given location is already visible.
 */
 void c_CMRT(caosVM* vm) {
@@ -169,7 +169,7 @@ void c_CMRT(caosVM* vm) {
  CMRA (command) x (integer) y (integer) pan (integer)
  %status maybe
 
- Sets the position of the current camera so that the top left corner of the view is at the 
+ Sets the position of the current camera so that the top left corner of the view is at the
  given coordinates.
 
  Set pan to 0 for no panning (jump), or 1 for smooth scrolling if in the same metaroom.
@@ -189,7 +189,7 @@ void c_CMRA(caosVM* vm) {
 
  Sets the position of the current camera so that the view centers on the given coordinates.
 
- Set pan to 0 for no panning (jump), 1 for smooth scrolling if in the same metaroom, or 2 
+ Set pan to 0 for no panning (jump), 1 for smooth scrolling if in the same metaroom, or 2
  for smooth scrolling if the given location is already visible.
 */
 void c_CMRP(caosVM* vm) {
@@ -325,8 +325,8 @@ void v_WDOW(caosVM* vm) {
 
  Tell the current camera to track the specified agent, or set to NULL to stop tracking.
  xpercent and ypercent define a rectangle on the screen which the camera should keep the tracked agent inside.
- Style 0 is brittle-- tracking is broken easily.  Style 1 is flexible-- moving the camera 
- back inside the rectangle resumes tracking.  Style 3 is hard-- you can't move outside the 
+ Style 0 is brittle-- tracking is broken easily.  Style 1 is flexible-- moving the camera
+ back inside the rectangle resumes tracking.  Style 3 is hard-- you can't move outside the
  rectangle.
  Rransition: 0 for none, 1 for flip horizontal, 2 for burst.
 */
@@ -354,10 +354,10 @@ void v_TRCK(caosVM* vm) {
  LINE (command) x1 (integer) y1 (integer) x2 (integer) y2 (integer) r (integer) g (integer) b (integer) stipple_on (integer) stipple_off (integer)
  %status stub
 
- Draw a line between two endpoints with the given coordinates, in the color specified by 
- the given red, green, and blue values. 
- 
- Set stipple_on to a number of pixels to alternate for stippling, or set stipple_off to 
+ Draw a line between two endpoints with the given coordinates, in the color specified by
+ the given red, green, and blue values.
+
+ Set stipple_on to a number of pixels to alternate for stippling, or set stipple_off to
  turn stippling off.
 
  Setting the the endpoints to the same point will remove all lines for the agent.
@@ -381,7 +381,7 @@ void c_LINE(caosVM* vm) {
  SNAX (integer) filename (string)
  %status maybe
 
- Determines whether or not the given image file exists in the world 
+ Determines whether or not the given image file exists in the world
  images directory (0 or 1).
 */
 void v_SNAX(caosVM* vm) {
@@ -398,7 +398,7 @@ void v_SNAX(caosVM* vm) {
  SCAM (command) agent (agent) part (integer)
  %status maybe
 
- Sets which camera to use in camera macro commands.  If 'agent' and 
+ Sets which camera to use in camera macro commands.  If 'agent' and
  'part' are NULL, the main camera will be used.
 */
 void c_SCAM(caosVM* vm) {
@@ -424,8 +424,8 @@ void c_SCAM(caosVM* vm) {
  ZOOM (command) pixels (integer) x (integer) y (integer)
  %status stub
 
- Zoom the current camera by the given number of pixels on the given x/y 
- coordinates in the world.  If the coordinates are set to -1, the 
+ Zoom the current camera by the given number of pixels on the given x/y
+ coordinates in the world.  If the coordinates are set to -1, the
  current center position of the camera's view will be used.
 */
 void c_ZOOM(caosVM* vm) {

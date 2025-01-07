@@ -4,7 +4,7 @@
 
 class Texture {
   public:
-	Texture(){};
+	Texture() {};
 
 	template <typename T>
 	Texture(T* ptr_, int32_t width_, int32_t height_, void (*deleter_)(T*))

@@ -273,8 +273,8 @@ void c_RPAS(caosVM* vm) {
  %variants c1 c2
 */
 CAOS_LVALUE_TARG(XVEC,
-				 Vehicle* v = dynamic_cast<Vehicle*>(vm->targ.get());
-				 THROW_IFNOT(v), v->xvec, v->xvec = newvalue)
+	Vehicle* v = dynamic_cast<Vehicle*>(vm->targ.get());
+	THROW_IFNOT(v), v->xvec, v->xvec = newvalue)
 
 /**
  YVEC (variable)
@@ -282,8 +282,8 @@ CAOS_LVALUE_TARG(XVEC,
  %variants c1 c2
 */
 CAOS_LVALUE_TARG(YVEC,
-				 Vehicle* v = dynamic_cast<Vehicle*>(vm->targ.get());
-				 THROW_IFNOT(v), v->yvec, v->yvec = newvalue)
+	Vehicle* v = dynamic_cast<Vehicle*>(vm->targ.get());
+	THROW_IFNOT(v), v->yvec, v->yvec = newvalue)
 
 /**
  BUMP (integer)

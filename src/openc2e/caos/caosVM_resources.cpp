@@ -67,10 +67,10 @@ bool prayInstall(std::string name, unsigned int type, bool actually_install) {
 			find_func = &findCatalogueFile;
 			create_func = &createUserCatalogueFile;
 			break;
-		//case 8: find_func = &findBootstrapFile; create_func = &createUserBootstrapFile; // bootstrap
-		//case 9: find_func = &findMyWorldsFile; create_func = &createUserMyWorldsFile; // my worlds
-		// case 10: find_func = &findMyCreaturesFile; create_func = &createUserMyCreaturesFile; // my creatures
-		// case 11: find_func = &findMyAgentsFile; create_func = &createUserMyAgentsFile; // my agents
+		// case 8: find_func = &findBootstrapFile; create_func = &createUserBootstrapFile; // bootstrap
+		// case 9: find_func = &findMyWorldsFile; create_func = &createUserMyWorldsFile; // my worlds
+		//  case 10: find_func = &findMyCreaturesFile; create_func = &createUserMyCreaturesFile; // my creatures
+		//  case 11: find_func = &findMyAgentsFile; create_func = &createUserMyAgentsFile; // my agents
 		default: throw Exception(fmt::format("Unimplemented PRAY resource type {}", type));
 	}
 
@@ -161,7 +161,7 @@ int prayInstallDeps(std::string name, bool actually_install) {
 	return 0;
 }
 
-//used by PRAY BACK, PRAY FORE, PRAY NEXT and PRAY PREV to implement their functionality
+// used by PRAY BACK, PRAY FORE, PRAY NEXT and PRAY PREV to implement their functionality
 std::string findBlock(std::string type, std::string last, bool forward, bool loop) {
 	PrayBlock *firstblock = 0, *currblock = 0;
 	bool foundblock = false;

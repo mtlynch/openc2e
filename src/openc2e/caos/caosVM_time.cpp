@@ -30,7 +30,7 @@
  %status maybe
 
  return speed factor of last ten ticks.
- 
+
  < 1.0 = engine is ticking faster than BUZZ rating. > 1.0 = engine is ticking slower.
 
  You might want to use this to reduce the amount of agents created or the amount of processing done if the speed factor is above 1.0.
@@ -70,7 +70,7 @@ void v_DATE(caosVM* vm) {
 /**
  HIST DATE (integer) tick (integer)
  %status stub
- 
+
  Returns the day in the season of the current game world at the specified world tick, starting at 0. See DATE.
 */
 void v_HIST_DATE(caosVM* vm) {
@@ -117,7 +117,7 @@ void v_TIME(caosVM* vm) {
 /**
  HIST TIME (integer) tick (integer)
  %status stub
- 
+
  Returns the time of day in the current game world at the specified world tick. 0 is dawn, 1 is morning, 2 is afternoon, 3 is evening and 4 is night. See TIME.
 */
 void v_HIST_TIME(caosVM* vm) {
@@ -165,7 +165,7 @@ void v_MSEC(caosVM* vm) {
 /**
  WPAU (command) paused (integer)
  %status stub
- 
+
  If paused is 0, enable world ticks, otherwise (1) disable them.
 */
 void c_WPAU(caosVM* vm) {
@@ -250,7 +250,7 @@ void v_WTIK(caosVM* vm) {
 /**
  RACE (integer)
  %status maybe
- 
+
  Returns the time in milliseconds which the last tick took overall.
 */
 void v_RACE(caosVM* vm) {

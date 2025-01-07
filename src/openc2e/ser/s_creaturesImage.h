@@ -12,22 +12,22 @@ namespace serialization {
 template <class Archive>
 inline void save(Archive& ar, const p_img& obj, const int version) {
 	bool isNull = (obj == NULL);
-	ar& isNull;
+	ar & isNull;
 	if (!isNull) {
 		std::string name = obj->getName();
-		ar& name;
+		ar & name;
 	}
 }
 
 template <class Archive>
 inline void load(Archive& ar, p_img& obj, const int version) {
 	bool isNull;
-	ar& isNull;
+	ar & isNull;
 	if (isNull)
 		obj = NULL;
 	else {
 		std::string name;
-		ar& name;
+		ar & name;
 		obj = world.gallery->getImage(name);
 	}
 }

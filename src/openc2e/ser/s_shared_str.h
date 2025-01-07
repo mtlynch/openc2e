@@ -7,7 +7,7 @@
 #include <boost/serialization/string.hpp>
 
 SERIALIZE(shared_str) {
-	ar& obj.p;
+	ar & obj.p;
 }
 BOOST_CLASS_IMPLEMENTATION(shared_str, boost::serialization::object_serializable);
 BOOST_CLASS_TRACKING(shared_str, boost::serialization::track_never);

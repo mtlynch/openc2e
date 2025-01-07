@@ -61,7 +61,7 @@ void v_CLAC(caosVM* vm) {
  CLIK (command) msg1 (integer) msg2 (integer) msg3 (integer)
  %status maybe
 
- Sets three different message types that will sent to the TARG agent when clicked, on a 
+ Sets three different message types that will sent to the TARG agent when clicked, on a
  rotating basis.  Setting any of the three types to -1 will cause it to be ignored. Using
  this command will override and reset the value set by CLAC.
 */
@@ -103,8 +103,8 @@ void v_CLIK(caosVM* vm) {
  IMSK (command) flags (integer)
  %status maybe
 
- Sets the input event flags for the target agent, which tell the engine which events the 
- agent requires scripts to be fired for. For example, setting the "key up" flag means the 
+ Sets the input event flags for the target agent, which tell the engine which events the
+ agent requires scripts to be fired for. For example, setting the "key up" flag means the
  target agent has the relevant script executed every time a key is released.
 
  Add the following values together to calculate the flags parameter: 1 for key down, 2 for key up, 4 for mouse move, 8 for mouse down, 16 for mouse up, 32 for mouse wheel movement and 64 for (translated) keypress.

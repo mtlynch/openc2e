@@ -121,7 +121,7 @@ void c_RTAR(caosVM* vm) {
  TTAR (command) family (integer) genus (integer) species (integer)
  %status maybe
 
- Locates a random agent that is touching OWNR (see ETCH) and that 
+ Locates a random agent that is touching OWNR (see ETCH) and that
  matches the given classifier, and sets it to TARG.
 */
 void c_TTAR(caosVM* vm) {
@@ -392,7 +392,7 @@ void v_TARG(caosVM* vm) {
  OWNR (agent)
  %status maybe
  %variants c1 c2 cv c3 sm
- 
+
  Returns OWNR, the agent that is running the script.
 */
 void v_OWNR(caosVM* vm) {
@@ -767,8 +767,8 @@ void v_BHVR(caosVM* vm) {
  CARR (agent)
  %status maybe
 
- Returns the agent that is carrying the TARG agent.  If TARG is not being carried, returns 
- NULL. 
+ Returns the agent that is carrying the TARG agent.  If TARG is not being carried, returns
+ NULL.
 */
 void v_CARR(caosVM* vm) {
 	VM_VERIFY_SIZE(0)
@@ -786,8 +786,8 @@ void v_CARR(caosVM* vm) {
  %status maybe
  %variants c1 c2
 
- Returns the agent that is carrying the OWNR agent.  If OWNR is not being carried, returns 
- NULL. 
+ Returns the agent that is carrying the OWNR agent.  If OWNR is not being carried, returns
+ NULL.
 */
 void v_CARR_c1(caosVM* vm) {
 	VM_VERIFY_SIZE(0)
@@ -887,7 +887,7 @@ unsigned int calculateScriptId(unsigned int message_id) {
  %status maybe
  %variants c1 c2 cv c3 sm
 
- Sends a message of type message_id to the given agent.  FROM will be set to OWNR unless 
+ Sends a message of type message_id to the given agent.  FROM will be set to OWNR unless
  there is no agent involved in sending the message.
 */
 void c_MESG_WRIT(caosVM* vm) {
@@ -903,8 +903,8 @@ void c_MESG_WRIT(caosVM* vm) {
  %status maybe
  %variants c2 cv c3 sm
 
- Sends a message of type message_id to the given agent, much like MESG WRIT, but with the 
- addition of parameters.  The message will be sent after waiting the number of ticks set 
+ Sends a message of type message_id to the given agent, much like MESG WRIT, but with the
+ addition of parameters.  The message will be sent after waiting the number of ticks set
  in delay (except doesn't, right now.  Delay must be set to zero for now.)
 */
 void c_MESG_WRT(caosVM* vm) {
@@ -955,7 +955,7 @@ void v_TOTL(caosVM* vm) {
 /**
  SHOW (command) visibility (integer)
  %status maybe
- 
+
  Sets visibility of the TARG agent to cameras. 0 = invisible, 1 = visible.
 */
 void c_SHOW(caosVM* vm) {
@@ -1313,8 +1313,8 @@ void v_TRAN(caosVM* vm) {
  TRAN (command) transparency (integer) part_no (integer)
  %status maybe
 
- Sets the TARG agent's behaviour with regard to transparency.  If set to 1, invisible 
- parts of the agent can't be clicked.  If 0, anywhere on the agent (including transparent 
+ Sets the TARG agent's behaviour with regard to transparency.  If set to 1, invisible
+ parts of the agent can't be clicked.  If 0, anywhere on the agent (including transparent
  parts) can be clicked.
 */
 void c_TRAN(caosVM* vm) {
@@ -1388,7 +1388,7 @@ void v_TICK(caosVM* vm) {
  PUPT (command) pose (integer) x (integer) y (integer)
  %status maybe
 
- Sets relative x/y coordinates for the location in the world where the TARG agent picks up 
+ Sets relative x/y coordinates for the location in the world where the TARG agent picks up
  objects.  The pose is relative to the first image set in NEW: (not BASE).
 */
 void c_PUPT(caosVM* vm) {
@@ -1440,7 +1440,7 @@ void c_STPT(caosVM* vm) {
  %status done
  %variants c3 cv sm openc2e
 
- Turns the display of the TARG agent's physical core on and off. Gives a general idea of 
+ Turns the display of the TARG agent's physical core on and off. Gives a general idea of
  its size and location (including invisible agents).
 */
 void c_DCOR(caosVM* vm) {
@@ -1533,7 +1533,7 @@ void v_ROTA(caosVM* vm) {
  DISQ (float) other (agent)
  %status maybe
 
- Calculates the square of the distance between the centers of the TARG agent and the given 
+ Calculates the square of the distance between the centers of the TARG agent and the given
  agent.
 */
 void v_DISQ(caosVM* vm) {

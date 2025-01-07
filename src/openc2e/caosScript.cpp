@@ -232,7 +232,7 @@ caostoken* caosScript::getToken(logicaltokentype expected) {
 void caosScript::putBackToken(caostoken*) {
 	curindex--;
 	errindex = curindex - 1; // curindex refers to the /next/ token to be parsed
-		// so make sure we refer to the token before it
+							 // so make sure we refer to the token before it
 }
 
 void caosScript::parse(std::istream& in) {

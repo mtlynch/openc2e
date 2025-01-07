@@ -69,8 +69,12 @@ void post_load(Archive& ar, Object& obj, const unsigned int version) {
 	}
 
 #define WRAP_SERIALIZE(c) \
-	SAVE(c) { o_serialize(ar, *const_cast<c*>(&obj), version); } \
-	LOAD(c) { o_serialize(ar, obj, version); }
+	SAVE(c) { \
+		o_serialize(ar, *const_cast<c*>(&obj), version); \
+	} \
+	LOAD(c) { \
+		o_serialize(ar, obj, version); \
+	}
 
 #define SER_BASE(ar, bc) \
 	do { \

@@ -57,9 +57,9 @@ static fs::path calculateJournalFilename(int directory, std::string filename) {
  FILE GLOB (command) directory (integer) filespec (string)
  %status maybe
 
- Globs the given journal directory (pass 0 for the world directory, or 1 for the main directory) for the 
+ Globs the given journal directory (pass 0 for the world directory, or 1 for the main directory) for the
  given filespec (you can use wildcards, and descend into subdirectories using '..').
- 
+
  The result is placed on the input stream for reading with standard input commands (eg, INNI and INNL);
  this consists of the number of results on the first line, and then the full filename paths to the matched
  files on the remaining lines.
@@ -99,7 +99,7 @@ void c_FILE_ICLO(caosVM* vm) {
  FILE IOPE (command) directory (integer) filename (string)
  %status maybe
 
- Puts the given filename in the given directory (pass 1 for the world directory, or 0 for the main 
+ Puts the given filename in the given directory (pass 1 for the world directory, or 0 for the main
  directory) on the current VM's input stream, for use by INOK, INNL, INNI and INNF.
  If a file is already open, it will be closed first.
 */
@@ -122,7 +122,7 @@ void c_FILE_IOPE(caosVM* vm) {
  FILE JDEL (command) directory (integer) filename (string)
  %status stub
 
- Removes the given file in the given directory (pass 1 for the world directory, or 0 for the main 
+ Removes the given file in the given directory (pass 1 for the world directory, or 0 for the main
  directory) immediately.
 */
 void c_FILE_JDEL(caosVM* vm) {
@@ -164,7 +164,7 @@ void c_FILE_OFLU(caosVM* vm) {
 
  Puts the given filename in the given directory (pass 1 for the world directory, or 0 for the main
  directory) on the current VM's output stream.
- If a file is already open, it will be closed first. 
+ If a file is already open, it will be closed first.
 */
 void c_FILE_OOPE(caosVM* vm) {
 	VM_PARAM_INTEGER(append)

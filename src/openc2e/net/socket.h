@@ -15,7 +15,7 @@ typedef unsigned int SOCKET;
 #endif
 #else
 typedef int SOCKET;
-#define INVALID_SOCKET ((SOCKET)-1)
+#define INVALID_SOCKET ((SOCKET) - 1)
 #endif
 
 int sockinit();

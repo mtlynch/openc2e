@@ -24,7 +24,7 @@ BOOST_CLASS_TRACKING(nulltype_tag, boost::serialization::track_never);
 
 
 SERIALIZE(caosValue) {
-	ar& obj.value;
+	ar & obj.value;
 }
 BOOST_CLASS_IMPLEMENTATION(caosValue, boost::serialization::object_serializable);
 BOOST_CLASS_TRACKING(caosValue, boost::serialization::track_never);

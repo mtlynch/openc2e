@@ -26,8 +26,8 @@
 #include "serialization.h"
 
 SERIALIZE(MetaRoom) {
-	ar& obj.xloc& obj.yloc& obj.wid& obj.hei;
-	ar& obj.backgrounds& obj.firstback;
+	ar & obj.xloc & obj.yloc & obj.wid & obj.hei;
+	ar & obj.backgrounds & obj.firstback;
 }
 
 #endif

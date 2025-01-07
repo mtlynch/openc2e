@@ -100,7 +100,7 @@ void prayManager::addFile(const fs::path& filename) {
 	for (size_t i = 0; i < f.getNumBlocks(); i++) {
 		if (blocks.find(f.getBlockName(i)) != blocks.end()) // garr, block conflict
 			continue;
-		//assert(blocks.find(f.getBlockName(i)) == blocks.end());
+		// assert(blocks.find(f.getBlockName(i)) == blocks.end());
 		blocks[f.getBlockName(i)] = std::unique_ptr<PrayBlock>(new PrayBlock(filename.string(), f.getBlockType(i), f.getBlockName(i), f.getBlockIsCompressed(i)));
 	}
 }
@@ -118,7 +118,7 @@ void prayManager::update() {
 	for (auto ext : extensions) {
 		for (auto f : findAgentFiles("*." + ext)) {
 			// TODO: language checking!
-			//std::cout << "scanning PRAY file " << d->path().string() << std::endl;
+			// std::cout << "scanning PRAY file " << d->path().string() << std::endl;
 			try {
 				addFile(f);
 			} catch (Exception& e) {

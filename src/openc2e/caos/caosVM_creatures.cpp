@@ -263,8 +263,8 @@ void c_STIM_WRIT_c2(caosVM* vm) {
 	VM_PARAM_AGENT_UNUSED(creature)
 
 	// TODO
-	//oldCreature *c = getoldCreature(creature.get());
-	//if (!c) return; // ignored on non-creatures
+	// oldCreature *c = getoldCreature(creature.get());
+	// if (!c) return; // ignored on non-creatures
 
 	// TODO
 }
@@ -293,7 +293,7 @@ void c_STIM_FROM_c1(caosVM* vm) {
 }
 
 /**
- SWAY SHOU (command) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) 
+ SWAY SHOU (command) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float)
  %status stub
 
  Adjusts these four drives in all Creatures who can hear OWNR.
@@ -310,11 +310,11 @@ void c_SWAY_SHOU(caosVM* vm) {
 	VM_PARAM_INTEGER_UNUSED(drive1)
 
 	valid_agent(vm->owner);
-	//TODO
+	// TODO
 }
 
 /**
- SWAY SIGN (command) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) 
+ SWAY SIGN (command) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float)
  %status stub
 
  Adjusts these four drives in all Creatures who can see OWNR.
@@ -331,11 +331,11 @@ void c_SWAY_SIGN(caosVM* vm) {
 	VM_PARAM_INTEGER_UNUSED(drive1)
 
 	valid_agent(vm->owner);
-	//TODO
+	// TODO
 }
 
 /**
- SWAY TACT (command) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) 
+ SWAY TACT (command) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float)
  %status stub
 
  Adjusts these four drives in all Creatures who are touching OWNR.
@@ -352,11 +352,11 @@ void c_SWAY_TACT(caosVM* vm) {
 	VM_PARAM_INTEGER_UNUSED(drive1)
 
 	valid_agent(vm->owner);
-	//TODO
+	// TODO
 }
 
 /**
- SWAY WRIT (command) creature (agent) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) 
+ SWAY WRIT (command) creature (agent) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float) drive (integer) adjust (float)
  %status stub
 
  Adjusts these four drives in the specified creature.
@@ -374,7 +374,7 @@ void c_SWAY_WRIT(caosVM* vm) {
 	VM_PARAM_VALIDAGENT(creature)
 
 	valid_agent(vm->owner);
-	//TODO
+	// TODO
 }
 
 /**
@@ -398,7 +398,7 @@ void c_NOHH(caosVM* vm) {
  ZOMB (command) zombie (integer)
  %status maybe
 
- Turns zombification of the target Creature on and off.  Set to 1 to disconnect the brain and 
+ Turns zombification of the target Creature on and off.  Set to 1 to disconnect the brain and
  motor of the target Creature, and 0 to undo.
 */
 void c_ZOMB(caosVM* vm) {
@@ -466,7 +466,7 @@ void v_HHLD(caosVM* vm) {
  MVFT (command) x (float) y (float)
  %status maybe
 
- Move the target Creature's foot (along with the rest of the Creature, obviously) to the given 
+ Move the target Creature's foot (along with the rest of the Creature, obviously) to the given
  coordinates.  You should use this rather than MVTO for Creatures.
 */
 void c_MVFT(caosVM* vm) {
@@ -651,7 +651,7 @@ void c_URGE_TACT(caosVM* vm) {
  URGE WRIT (command) creature (agent) noun_id (integer) noun_stim (float) verb_id (integer) verb_stim (float)
  %status stub
 
- Urges the specified Creature to perform the specified action (verb) on the specified object type 
+ Urges the specified Creature to perform the specified action (verb) on the specified object type
  (noun).  Provide a stim greater than 1 to force, and an id of -1 and a stim greater than 1 to unforce.
 */
 void c_URGE_WRIT(caosVM* vm) {
@@ -767,7 +767,7 @@ void v_CHEM(caosVM* vm) {
  CHEM (integer) chemical_id (integer)
  %status maybe
  %variants c1 c2
- 
+
  Returns the level of a chemical (0 to 255) in target creature's bloodstream.
 */
 void v_CHEM_c1(caosVM* vm) {
@@ -835,7 +835,7 @@ class blockUntilApproached : public blockCond {
 		// parentcreature is guaranteed to be valid if parent is
 
 		// TODO: cope with this problem (eg: another APPR, creature paused, non-skeletal creature, etc)
-		//if (parentcreature->isApproaching()) return false;
+		// if (parentcreature->isApproaching()) return false;
 
 		// note that this merely sets up the approach to be done on the next tick of the creature
 		parentcreature->approach(it);
@@ -849,7 +849,7 @@ class blockUntilApproached : public blockCond {
  %status maybe
  %variants c1 c2 cv c3
 
- Makes the target Creature approach the IT agent (or if none, an agent of that category using CAs), 
+ Makes the target Creature approach the IT agent (or if none, an agent of that category using CAs),
  blocking until it makes it there or gives up.
 */
 void c_APPR(caosVM* vm) {
@@ -918,7 +918,7 @@ void v_FACE(caosVM* vm) {
 /**
  LIKE (command) creature (agent)
  %status stub
- 
+
  Causes the target Creature to state an opinion about the specified Creature.
 */
 void c_LIKE(caosVM* vm) {
@@ -931,7 +931,7 @@ void c_LIKE(caosVM* vm) {
 /**
  LIMB (string) bodypart (integer) genus (integer) gender (integer) age (integer) variant (integer)
  %status stub
- 
+
  Returns the filename for the specified part of a Creature, substituting as necessary.
 */
 void v_LIMB(caosVM* vm) {
@@ -1002,8 +1002,8 @@ void c_ORDR_WRIT(caosVM* vm) {
  DREA (command) dream (integer)
  %status maybe
 
- Turns a Creature's dreaming on and off.  A Creature's instincts are 
- processed while it is dreaming.  If it is not asleep already, then it 
+ Turns a Creature's dreaming on and off.  A Creature's instincts are
+ processed while it is dreaming.  If it is not asleep already, then it
  will be made to sleep before dreaming begins.
 */
 void c_DREA(caosVM* vm) {
@@ -1028,7 +1028,7 @@ void v_DREA(caosVM* vm) {
  BORN (command)
  %status maybe
 
- Registers the birth of the target Creature, and sends a birth event to 
+ Registers the birth of the target Creature, and sends a birth event to
  the game.
 */
 void c_BORN(caosVM* vm) {
@@ -1052,7 +1052,7 @@ void v_CAGE(caosVM* vm) {
  BYIT (integer)
  %status maybe
 
- Determines whether or not the target Creature can reach the IT agent (0 
+ Determines whether or not the target Creature can reach the IT agent (0
  or 1).
 */
 void v_BYIT(caosVM* vm) {
@@ -1069,7 +1069,7 @@ void v_BYIT(caosVM* vm) {
  %status maybe
  %variants c1 c2 cv c3
 
- Returns the agent that the OWNR creature was focused on when the 
+ Returns the agent that the OWNR creature was focused on when the
  current script began running.
 */
 void v_IT(caosVM* vm) {
@@ -1081,7 +1081,7 @@ void v_IT(caosVM* vm) {
 /**
  NEWC (command) family (integer) gene_agent (agent) gene_slot (integer) sex (integer) variant (integer)
  %status maybe
- 
+
  Creates a new creature over the space of a few ticks, using the specified agent/slot for genetic data. sex is 0 for random, 1 for male or 2 for female.
 */
 void c_NEWC(caosVM* vm) {
@@ -1122,7 +1122,7 @@ void c_NEWC(caosVM* vm) {
 /**
  NEW: CREA (command) family (integer) gene_agent (agent) gene_slot (integer) sex (integer) variant (integer)
  %status stub
- 
+
  Creates a new creature using the specified agent/slot for genetic data. sex is 0 for random, 1 for male or 2 for female.
 */
 void c_NEW_CREA(caosVM* vm) {
@@ -1133,7 +1133,7 @@ void c_NEW_CREA(caosVM* vm) {
 	VM_PARAM_INTEGER(family)*/
 
 	c_NEWC(vm); // TODO
-	//targ = NULL; // TODO
+	// targ = NULL; // TODO
 }
 
 /**
@@ -1337,7 +1337,7 @@ void c_LOCI(caosVM* vm) {
 /**
  LOCI (float) type (integer) organ (integer) tissue (integer) id (integer)
  %status maybe
- 
+
  Return the current value of the specified loci of the target creature. 'type' is 0 for receptor loci and 1 for emitter loci.
  See genetics documentation for details of thei parameters.
 */
@@ -1431,7 +1431,7 @@ void v_ORGF(caosVM* vm) {
  %status maybe
 
  Returns a count of receptors (value 0), emitters (value 1) or reactions (value 2) in the specified organ (numbered starting at zero) of the target creature.
- 
+
  Returns -1 if the specified organ or value is invalid.
 */
 void v_ORGI(caosVM* vm) {
@@ -1492,7 +1492,7 @@ void v_DECN(caosVM* vm) {
 /**
  ATTN (integer)
  %status maybe
- 
+
  Returns the current focus of attention id.
 */
 void v_ATTN(caosVM* vm) {
@@ -1511,7 +1511,7 @@ static Creature* getOwnerCreature(caosVM* vm) {
  ATTN (integer)
  %status maybe
  %variants c1
- 
+
  IT - obj that OWNR creature is attending to (may be NULL)
  NOTE: only OWNR's IT can be determined, not TARG's
 */

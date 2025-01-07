@@ -79,7 +79,7 @@ void c_SNDE(caosVM* vm) {
 /**
  SNDC (command) filename (string)
  %status maybe
- 
+
  Start playing a controlled sound with the target agent, which will follow the agent as it moves.
 */
 
@@ -104,7 +104,7 @@ void c_SNDC(caosVM* vm) {
 /**
  SNDL (command) filename (string)
  %status maybe
- 
+
  Start playing a looping controlled sound with the target agent, which will follow the agent as it moves.
 */
 

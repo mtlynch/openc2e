@@ -33,11 +33,11 @@
 
 #define CAOS_LVALUE_TARG_ROOM(name, check, get, set) \
 	CAOS_LVALUE_TARG(name, \
-					 std::shared_ptr<Room> r = roomContainingAgent(vm->targ); \
-					 THROW_IFNOT(r); \
-					 check, \
-					 get, \
-					 set)
+		std::shared_ptr<Room> r = roomContainingAgent(vm->targ); \
+		THROW_IFNOT(r); \
+		check, \
+		get, \
+		set)
 
 #define CAOS_LVALUE_ROOM_SIMPLE(name, expr) \
 	CAOS_LVALUE_TARG_ROOM(name, (void)0, expr, expr = newvalue)
@@ -45,7 +45,7 @@
 /**
  ADDM (integer) x (integer) y (integer) width (integer) height (integer) background (string)
  %status maybe
- 
+
  Creates a metaroom with the given height and width, at the coordinates given.  Returns the id of the new metaroom.
  */
 void v_ADDM(caosVM* vm) {
@@ -79,7 +79,7 @@ void c_ADDB(caosVM* vm) {
 /**
  BRMI (command) metaroom_base (integer) room_base (integer)
  %status maybe
- 
+
  Sets the base ID numbers for new metarooms and rooms to the given values.
  */
 void c_BRMI(caosVM* vm) {
@@ -95,7 +95,7 @@ void c_BRMI(caosVM* vm) {
 /**
  MAPD (command) width (integer) height (integer)
  %status maybe
- 
+
  Sets the world map dimensions, inside which metarooms are placed.
  */
 void c_MAPD(caosVM* vm) {
@@ -109,7 +109,7 @@ void c_MAPD(caosVM* vm) {
 /**
  MAPW (integer)
  %status maybe
- 
+
  Returns the width of the world map.
 */
 void v_MAPW(caosVM* vm) {
@@ -127,9 +127,9 @@ void v_MAPH(caosVM* vm) {
 }
 
 /**
- MAPK (command)  
+ MAPK (command)
  %status maybe
- 
+
  Resets and empties the world map.
  */
 void c_MAPK(caosVM*) {
@@ -295,7 +295,7 @@ void v_DOOR(caosVM* vm) {
  %status maybe
 
  Defines the rates of the given CA in the given room.  'gain' defines how easily the CA will be absorbed from
- agents inside the room, 'loss' defines how much will be lost into the air, and 'diffusion' defines how easily it 
+ agents inside the room, 'loss' defines how much will be lost into the air, and 'diffusion' defines how easily it
  will spread to other rooms.
 */
 void c_RATE(caosVM* vm) {
@@ -316,7 +316,7 @@ void c_RATE(caosVM* vm) {
 /**
  ROOM (integer) agent (agent)
  %status maybe
- 
+
  Returns the room that contains the given agent (jugding by its center).
 */
 void v_ROOM(caosVM* vm) {
@@ -333,7 +333,7 @@ void v_ROOM(caosVM* vm) {
 /**
  LEFT (integer)
  %status maybe
- 
+
  Returns the left constant (0).
 */
 void v_LEFT(caosVM* vm) {
@@ -345,7 +345,7 @@ void v_LEFT(caosVM* vm) {
 /**
  RGHT (integer)
  %status maybe
- 
+
  Returns the right constant (1).
 */
 void v_RGHT(caosVM* vm) {
@@ -357,7 +357,7 @@ void v_RGHT(caosVM* vm) {
 /**
  _UP_ (integer)
  %status maybe
- 
+
  Returns the up constant (2).
 */
 void v_UP(caosVM* vm) {
@@ -369,7 +369,7 @@ void v_UP(caosVM* vm) {
 /**
  DOWN (integer)
  %status maybe
- 
+
  Returns the down constant (3).
 */
 void v_DOWN(caosVM* vm) {
@@ -382,7 +382,7 @@ void v_DOWN(caosVM* vm) {
  PROP (command) roomid (integer) caindex (integer) cavalue (float)
  %status maybe
 
- Defines the level of the given CA in the given room.  Valid settings are between 0 and 1; if higher, it will be 
+ Defines the level of the given CA in the given room.  Valid settings are between 0 and 1; if higher, it will be
  reset to 1.
 */
 void c_PROP(caosVM* vm) {
@@ -536,7 +536,7 @@ void v_LINK(caosVM* vm) {
  GRID (integer) agent (agent) direction (integer)
  %status maybe
 
- Returns the nearest adjacent room to the specified agent in the given direction (one of the direction constants), or 
+ Returns the nearest adjacent room to the specified agent in the given direction (one of the direction constants), or
  -1 otherwise.
 */
 void v_GRID(caosVM* vm) {
@@ -1048,7 +1048,7 @@ void c_ROOM(caosVM* vm) {
 
 		// MetaRoom *m = world.map->getMetaRoom(0);
 		// unsigned int roomid = m->addRoom(r);
-		//assert(roomid == (unsigned int)roomno); // TODO: this is fairly likely to fail, but is a major bug if it does, FIX ME!
+		// assert(roomid == (unsigned int)roomno); // TODO: this is fairly likely to fail, but is a major bug if it does, FIX ME!
 		r->id = roomno;
 	} else {
 		r->x_left = left;
@@ -1230,11 +1230,11 @@ void v_ROOM_c1(caosVM* vm) {
  The world-wrapping flag for the specified metaroom. 1 to enable wrapping, 0 to disable.
 */
 CAOS_LVALUE(WRAP,
-			VM_PARAM_INTEGER(metaroom_id);
-			MetaRoom* mr = world.map->getMetaRoom(metaroom_id);
-			THROW_IFNOT(mr),
-			caosValue((int)mr->wraparound()),
-			mr->setWraparound(newvalue.getInt()))
+	VM_PARAM_INTEGER(metaroom_id);
+	MetaRoom* mr = world.map->getMetaRoom(metaroom_id);
+	THROW_IFNOT(mr),
+	caosValue((int)mr->wraparound()),
+	mr->setWraparound(newvalue.getInt()))
 
 /**
  SSFC (command) roomno (integer) count (integer) x1 (integer) y1 (integer)

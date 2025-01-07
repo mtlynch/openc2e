@@ -543,7 +543,7 @@ void c2Organ::tick() {
 		biochemticks++;
 
 		// TODO: is this the correct way to handle biotickstart?
-		//if (biochemticks < ourGene->biotickstart) return;
+		// if (biochemticks < ourGene->biotickstart) return;
 
 		ticked = true;
 
@@ -580,7 +580,7 @@ void c2Organ::tick() {
 	}
 
 	// TODO: ensure we've ticked at least once
-	//if (biochemticks < ourGene->biotickstart) return;
+	// if (biochemticks < ourGene->biotickstart) return;
 	if (biochemticks == 0)
 		return;
 

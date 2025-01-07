@@ -70,7 +70,7 @@ void Catalogue::initFrom(fs::path path, std::string language) {
 	assert(fs::exists(path));
 	assert(fs::is_directory(path));
 
-	//std::cout << "Catalogue is reading " << path.string() << std::endl;
+	// std::cout << "Catalogue is reading " << path.string() << std::endl;
 
 	fs::directory_iterator end;
 	std::string file;

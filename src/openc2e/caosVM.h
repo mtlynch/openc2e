@@ -33,8 +33,8 @@
 
 class script;
 
-//#define CAOSDEBUG
-//#define CAOSDEBUGDETAIL
+// #define CAOSDEBUG
+// #define CAOSDEBUGDETAIL
 
 // caosVM_agent.cpp:
 unsigned int calculateScriptId(unsigned int message_id);

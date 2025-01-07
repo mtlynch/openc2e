@@ -67,7 +67,7 @@ Line::Line(Point s, Point e) {
 bool Line::intersect(const Line& l, Point& where) const {
 	if (type == HORIZONTAL) {
 		if (l.type == HORIZONTAL)
-			//return l.start.y == start.y;
+			// return l.start.y == start.y;
 			return false;
 		// XXX: set where to something useful
 		if (l.type == VERTICAL) {
@@ -92,7 +92,7 @@ bool Line::intersect(const Line& l, Point& where) const {
 	}
 	if (type == VERTICAL) {
 		if (l.type == VERTICAL)
-			//return l.start.x == start.x;
+			// return l.start.x == start.x;
 			return false;
 		// XXX: set where to something useful
 		if (l.type == HORIZONTAL) {

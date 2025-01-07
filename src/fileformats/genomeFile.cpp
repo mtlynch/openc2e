@@ -190,12 +190,12 @@ std::istream& operator>>(std::istream& s, genomeFile& f) {
 			throw Exception("unsupported genome version in majic");
 	}
 
-	//std::cout << "creaturesGenomeFile: reading genome of version " << (unsigned int)f.cversion << ".\n";
+	// std::cout << "creaturesGenomeFile: reading genome of version " << (unsigned int)f.cversion << ".\n";
 	f.currorgan = 0;
 	while (f.nextGene(s) != 0) {
 	}
 	f.currorgan = 0;
-	//std::cout << "creaturesGenomeFile: read " << (unsigned int)f.genes.size() << " top-level genes.\n";
+	// std::cout << "creaturesGenomeFile: read " << (unsigned int)f.genes.size() << " top-level genes.\n";
 
 	return s;
 }
